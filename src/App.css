@@ -1,33 +1,30 @@
-.App {
-  text-align: center;
+.masterWrapper {
+  padding-top: 1em;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.assign-btn{
+  width:100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.crewAssignments {
+  padding: 2em;
 }
 
-.App-link {
-  color: #61dafb;
+.assignmentContainer {
+  padding: 1em;
+  border: 1px solid #ccc;
+  background-color: #efefef;
+  border-radius: 8px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.assignment {
+  background-color: #fff !important;
+  border-radius: 4px;
+  padding: 0.5em;
+  margin-top: 0.5em;
+}
+
+.select-person{
+  margin-left:10px;
+  margin-right:10px;
 }

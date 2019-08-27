@@ -1,0 +1,14 @@
+{
+  "ang": ["passenger"],
+  "karis": ["passenger"],
+  "hazel": ["passenger"],
+
+  "misa": ["cfi", "cfii", "mei"],
+
+  "buffy": ["safety-pilot"],
+  "tim": ["safety-pilot", "cfi"],
+
+  "rob": ["cfi"],
+  "bart": ["cfi"],
+  "cecily": ["cfi", "cfii", "mei"]
+}
