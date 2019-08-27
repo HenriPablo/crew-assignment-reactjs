@@ -1,10 +1,11 @@
 // Reducer
 import roles from "./data/roles.json";
 import persons from "./data/people.json";
+import plane from "./data/plane";
 
 const counter = (state, action) => {
-    console.log("state: ", state);
-    console.log("action: ", action);
+    //console.log("state: ", state);
+    //console.log("action: ", action);
 
     if (state === undefined) {
         return {
@@ -16,8 +17,9 @@ const counter = (state, action) => {
             nextKey: 0,
             filterBy: "",
             /** marker updated in Roles and Persons dropdowns to force re-render of those elements  */
-            x: new Date().getTime()
-        };
+            x: new Date().getTime(),
+            maxAssignments: plane.seats
+        }
     }
 
     switch (action.type) {
@@ -52,6 +54,5 @@ const counter = (state, action) => {
         default:
             return state;
     }
-};
-
+}
 export default counter;

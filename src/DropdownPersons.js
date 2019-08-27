@@ -29,7 +29,7 @@ var updatePersonSelection = (ass, persons, nk) => {
             ass[i].assignedPersons = persons;
         }
     }
-    console.log("ass in updatePersonSelection: ", ass);
+    //console.log("ass in updatePersonSelection: ", ass);
     return ass;
 };
 
@@ -49,7 +49,7 @@ const mapDispatchToProps = dispatch => {
             //dropdownSelection.filteredPersons = x;
             pSelection.x = new Date().getTime();//pSelection.x + 1;
             pSelection.ass = updatePersonSelection(props.ass, x, props.nextKey - 1);
-            console.log("pSelection.ass: ", pSelection.ass);
+            //console.log("pSelection.ass: ", pSelection.ass);
 
             //console.log("dropdown selection: ", dropdownSelection);
             return dispatch(pSelection);
@@ -65,7 +65,7 @@ const connectedDropdownSelect = connect(
 export const DropdownPersons = connectedDropdownSelect(
     class extends Component {
         buildDropdownOptions() {
-            console.log("props in DROPDOWN PERSONS:", this.props);
+            //console.log("props in DROPDOWN PERSONS:", this.props);
             let x = {};
             //console.log("this.props.ass.length: ", this.props.ass.length);
             for (let i = 0; i < this.props.ass.length; i++) {
@@ -77,18 +77,18 @@ export const DropdownPersons = connectedDropdownSelect(
                     this.props.ass[i].assignmentKey === this.props.personsKey &&
                     this.props.ass[i].assignedPersons !== null
                 ) {
-                    console.log(
-                        "this.props.ass[i].assignedPersons: ",
-                        this.props.ass[i].assignedPersons
-                    );
+                    // console.log(
+                    //     "this.props.ass[i].assignedPersons: ",
+                    //     this.props.ass[i].assignedPersons
+                    // );
                     x = this.props.ass[i].assignedPersons;
                 }
             }
             let y = [];
-            console.log("x in DROPDOWN PERSONS: ", x);
+            //console.log("x in DROPDOWN PERSONS: ", x);
             if (typeof x !== "undefined") {
                 Object.keys(x /*this.props.filteredPersons*/).forEach(item => {
-                    y.push(<option>{[item][0]}</option>);
+                    y.push(<option key={[item][0]} value={[item][0]}>{[item][0]}</option>);
                 });
             }
 
@@ -96,9 +96,11 @@ export const DropdownPersons = connectedDropdownSelect(
         }
 
         render() {
-            console.log("this.props in RENDER() DRPD PERSONS: ", this.props);
+            //console.log("this.props in RENDER() DRPD PERSONS: ", this.props);
             return (
                 <select
+                    id={"person-select-" + this.props.personsKey}
+                    name={"person-select-" + this.props.personsKey}
                     onChange={event =>
                         this.props.triggerChange(event.target.value, this.props)
                     }

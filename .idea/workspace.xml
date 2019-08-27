@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="90ccbfe4-0586-4b08-8377-6238a2bfa006" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssignButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssignButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Assignment.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assignment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssignmentsContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssignmentsContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DropdownPersons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/DropdownPersons.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DropdownRoles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/DropdownRoles.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
@@ -87,8 +83,17 @@
       <workItem from="1555183207606" duration="2040000" />
       <workItem from="1566777355604" duration="3928000" />
       <workItem from="1566912895596" duration="584000" />
-      <workItem from="1566913521397" duration="3706000" />
+      <workItem from="1566913521397" duration="3974000" />
+      <workItem from="1566928752690" duration="4130000" />
     </task>
+    <task id="LOCAL-00001" summary="added time stamp marker to force update redraw of Roles and Persons dropdowns, misc cleanup.">
+      <created>1566922342572</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1566922342573</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -106,6 +111,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added time stamp marker to force update redraw of Roles and Persons dropdowns, misc cleanup." />
+    <option name="LAST_COMMIT_MESSAGE" value="added time stamp marker to force update redraw of Roles and Persons dropdowns, misc cleanup." />
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
     <General>

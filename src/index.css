@@ -20,14 +20,14 @@
   padding: 1em;
   border: 1px solid #ccc;
   background-color: #efefef;
-  border-radius: 8px;
+  border-radius: .25rem;
 }
 
 .assignment {
   background-color: #fff !important;
   border-radius: 4px;
   padding: 0.5em;
-  margin-top: 0.5em;
+  margin-top: .25rem;
 }
 
 .select-person{

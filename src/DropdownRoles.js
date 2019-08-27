@@ -45,7 +45,6 @@ const dropdownSelection = {
     type: "dropdownSelection",
     filterBy: "",
     filteredType: "",
-    //filteredPersons: {},
     ass: [],
     x: 0
 };
@@ -82,7 +81,7 @@ export const DropdownRoles = connectedDropdownSelect(
         buildDropdownOptions() {
             let y = [];
             Object.keys(this.props.roles).forEach(item => {
-                y.push(<option>{[item][0]}</option>);
+                y.push(<option key={[item][0]} value={[item][0]}>{[item][0]}</option>);
             });
             return y;
         }
@@ -91,6 +90,8 @@ export const DropdownRoles = connectedDropdownSelect(
             //console.log("PROPS in ROLES DROPDOWN: ", this.props);
             return (
                 <select
+                    id={"role-select-" + this.props.rolesKey}
+                    name={"role-select-" + this.props.rolesKey}
                     onChange={event =>
                         this.props.triggerChange(
                             event,
