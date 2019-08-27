@@ -20,7 +20,7 @@ const pSelection = {
     filteredType: "",
     //filteredPersons: [],
     ass: [],
-    x: 1
+    x: 0
 };
 
 var updatePersonSelection = (ass, persons, nk) => {
@@ -47,7 +47,7 @@ const mapDispatchToProps = dispatch => {
                 }
             }
             //dropdownSelection.filteredPersons = x;
-            pSelection.x = pSelection.x + 1;
+            pSelection.x = new Date().getTime();//pSelection.x + 1;
             pSelection.ass = updatePersonSelection(props.ass, x, props.nextKey - 1);
             console.log("pSelection.ass: ", pSelection.ass);
 

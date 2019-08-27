@@ -11,8 +11,7 @@ class Assignment extends Component {
                 key={this.props.count}
                 className={"assignment d-flex justify-content-sm-between"}
             >
-                <small>delete key: {this.props.count}</small>
-                <br />
+                {/*<small>delete key: {this.props.count}</small><br />*/}
                 <DropdownRoles
                     emptyDefaultOption={"Select a Role"}
                     customClassNames={"custom-select select-role"}

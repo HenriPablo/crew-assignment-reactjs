@@ -14,8 +14,7 @@ const mapStateToProps = state => {
 
 // Action
 const deleteAssignment = {
-    type: "unassign",
-    payload: ["bob"]
+    type: "unassign"
 };
 
 // Map Redux actions to component props
@@ -59,7 +58,7 @@ export const AssignmentsContainer = connectedContainer(
                     </div>
                 );
             } else {
-                return <p>No assighemnts to show</p>;
+                return <p className={"no-assignments-mgs"}>No assighemnts to show</p>;
             }
         }
     }

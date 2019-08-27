@@ -10,7 +10,13 @@
   padding: 2em;
 }
 
+.no-assignments-mgs{
+  padding:1em;
+  text-align:center;
+}
+
 .assignmentContainer {
+  margin-top:1em;
   padding: 1em;
   border: 1px solid #ccc;
   background-color: #efefef;

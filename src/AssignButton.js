@@ -54,7 +54,7 @@ export const AssignButton = connectedButton(
                     >
                         Assign +{" "}
                     </button>
-                    <p>Assignments: {this.props.count}</p>
+                    {/*<p>Assignments: {this.props.count}</p>*/}
                 </div>
             );
         }

@@ -57,14 +57,14 @@ const mapDispatchToProps = dispatch => {
             dropdownSelection.filterBy = value;
             dropdownSelection.filteredByData = buildDropdown;
             let x = filterPersons(value, persons);
-            //dropdownSelection.filteredPersons = x;
+
             dropdownSelection.ass = assignPersonsToAss(
                 value,
                 props.ass,
                 x,
-                props.nextKey - 1
+                props.rolesKey //nextKey - 1
             );
-            dropdownSelection.x = dropdownSelection.x + 1;
+            dropdownSelection.x = new Date().getTime();
 
             //console.log("dropdown selection: ", dropdownSelection);
             return dispatch(dropdownSelection);

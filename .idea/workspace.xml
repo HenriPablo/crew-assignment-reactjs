@@ -2,26 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90ccbfe4-0586-4b08-8377-6238a2bfa006" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AssignButton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assignment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AssignmentsContainer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DeleteAssignmentBtn.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DropdownPersons.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DropdownRoles.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/people.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/plane.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/roles.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssignButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssignButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Assignment.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assignment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssignmentsContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssignmentsContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DropdownPersons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/DropdownPersons.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DropdownRoles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/DropdownRoles.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -97,6 +86,8 @@
       <updated>1555183203399</updated>
       <workItem from="1555183207606" duration="2040000" />
       <workItem from="1566777355604" duration="3928000" />
+      <workItem from="1566912895596" duration="584000" />
+      <workItem from="1566913521397" duration="3706000" />
     </task>
     <servers />
   </component>
@@ -108,10 +99,62 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="simpleUML.UMLToolWindowPlugin">
+    <General>
+      <option name="birdViewUpdateDelay" value="2000" />
+      <option name="defaultFileLocation" value="file://$PROJECT_DIR$/.." />
+    </General>
+    <Classdiagram>
+      <option name="diagramTitleFont" value="SansSerif,1,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="defaultFieldsExpanded" value="false" />
+      <option name="defaultContructorsExpanded" value="false" />
+      <option name="defaultMethodsExpanded" value="false" />
+      <option name="showParameters" value="true" />
+      <option name="showTooltip" value="true" />
+      <option name="showReturnValues" value="true" />
+      <option name="longModifier" value="true" />
+      <option name="implementsBehaviour" value="1" />
+      <option name="extendsBehaviour" value="1" />
+      <option name="compartmentBehaviour" value="1" />
+      <option name="interfaceBackgroundColor" value="-6494306" />
+      <option name="abstractClassBackgroundColor" value="-1580132" />
+      <option name="classBackgroundColor" value="-6508057" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="quickSourceLinkColor" value="-16776961" />
+      <option name="quickDiagramLinkColor" value="-8454144" />
+      <option name="drawDecorations" value="false" />
+      <option name="hideFieldList" value="" />
+      <option name="showFieldList" value="" />
+      <option name="hideConstructorList" value="" />
+      <option name="showConstructorList" value="" />
+      <option name="hideMethodList" value="" />
+      <option name="showMethodList" value="" />
+      <option name="minimumFigureSize" value="0,0" />
+    </Classdiagram>
+    <Dependencydiagram>
+      <option name="diagramTitleFont" value="SansSerif,1,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="packageNameCompressionLevel" value="0" />
+    </Dependencydiagram>
+    <Packagediagram>
+      <option name="diagramTitleFont" value="SansSerif,0,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="packageBackgroundColor" value="-4144960" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="packageNameCompressionLevel" value="2" />
+    </Packagediagram>
   </component>
 </project>
