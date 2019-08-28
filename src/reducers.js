@@ -18,7 +18,8 @@ const counter = (state, action) => {
             filterBy: "",
             /** marker updated in Roles and Persons dropdowns to force re-render of those elements  */
             x: new Date().getTime(),
-            maxAssignments: plane.seats
+            maxAssignments: plane.seats,
+            assigned: 0
         }
     }
 
@@ -28,7 +29,8 @@ const counter = (state, action) => {
                 ...state,
                 count: state.count + 1,
                 nextKey: state.count + 1,
-                ass: [action.ass, ...state.ass]
+                ass: [action.ass, ...state.ass],
+                assigned: state.assigned + 1
             };
 
         case "dropdownSelection":
@@ -48,7 +50,8 @@ const counter = (state, action) => {
         case "deleteAssignment":
             return {
                 ...state,
-                ass: action.newAss
+                ass: action.newAss,
+                assigned: state.assigned - 1
             };
 
         default:

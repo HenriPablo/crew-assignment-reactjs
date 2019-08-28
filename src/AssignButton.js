@@ -5,7 +5,8 @@ const mapStateToProps = state => {
     return {
         count: state.count,
         ass: state.ass,
-        nextKey: state.nextKey
+        nextKey: state.nextKey,
+        assigned: state.assigned
     };
 };
 
@@ -20,7 +21,12 @@ const addAssignment = {
 // Map Redux actions to component props
 const mapDispatchToProps = dispatch => {
     return {
-        createAssignment: function(nk) {
+        createAssignment: function(nk, props) {
+            if(props.assigned === 4){
+                alert("4 seats already assigned");
+                return false;
+            }
+
             addAssignment.nextKey = nk;
             addAssignment.ass = {
                 //["assignment" + (nk )]:
@@ -49,7 +55,7 @@ export const AssignButton = connectedButton(
             return (
                 <div>
                     <button
-                        onClick={() => this.props.createAssignment(this.props.nextKey)}
+                        onClick={() => this.props.createAssignment(this.props.nextKey, this.props)}
                         className="btn btn-primary assign-btn"
                     >
                         Assign +{" "}
