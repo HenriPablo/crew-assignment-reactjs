@@ -19,7 +19,8 @@ const counter = (state, action) => {
             /** marker updated in Roles and Persons dropdowns to force re-render of those elements  */
             x: new Date().getTime(),
             maxAssignments: plane.seats,
-            assigned: 0
+            assigned: 0,
+            showModal: false
         }
     }
 

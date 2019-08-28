@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import ModalDialog from "./ModalDailog";
+import ReactDOM from "react-dom";
 
 const mapStateToProps = state => {
     return {
         count: state.count,
         ass: state.ass,
         nextKey: state.nextKey,
-        assigned: state.assigned
+        assigned: state.assigned,
+        showModal: state.showModal
     };
 };
 
@@ -15,16 +18,29 @@ const addAssignment = {
     type: "assign",
     payload: "ang",
     ass: [],
-    nextKey: 0
+    nextKey: 0,
+    showModal: false
+
 };
+
+let closeModal = (e) =>{
+
+}
 
 // Map Redux actions to component props
 const mapDispatchToProps = dispatch => {
     return {
         createAssignment: function(nk, props) {
             if(props.assigned === 4){
-                alert("4 seats already assigned");
-                return false;
+                addAssignment.showModal = true;
+                addAssignment.showModal = true;
+                return dispatch(addAssignment);
+
+                //alert("4 seats already assigned");
+
+
+                //alert("4 seats already assigned");
+                //return false;
             }
 
             addAssignment.nextKey = nk;
@@ -52,6 +68,7 @@ const connectedButton = connect(
 export const AssignButton = connectedButton(
     class extends Component {
         render() {
+
             return (
                 <div>
                     <button
@@ -61,6 +78,14 @@ export const AssignButton = connectedButton(
                         Assign +{" "}
                     </button>
                     {/*<p>Assignments: {this.props.count}</p>*/}
+
+                    <ModalDialog
+                        closeModalHandler={e => closeModal(e)}
+                        show={this.props.showModal}
+                        modalTitle={"Modal Title"}
+                        modalBody={"Assignment at capacity."}
+                    />
+
                 </div>
             );
         }
