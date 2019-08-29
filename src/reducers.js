@@ -2,6 +2,7 @@
 import roles from "./data/roles.json";
 import persons from "./data/people.json";
 import plane from "./data/plane";
+import messages from "./data/messages";
 
 const counter = (state, action) => {
     console.log("state: ", state);
@@ -11,6 +12,7 @@ const counter = (state, action) => {
         return {
             roles: roles,
             persons: persons,
+            messages: messages,
             selectionType: "",
             count: 0,
             ass: [],

@@ -9,6 +9,7 @@ import ReactHtmlParser from "react-html-parser";
 const mapStateToProps = state => {
     return{
         showModal: state.showModal,
+        messages: state.messages,
         x: state.x
     };
 };
@@ -29,8 +30,6 @@ const mapDispatchToProps = dispatch => {
             if(props.showModal === false ){
                 showModal.showModal = false;
             }
-
-            //showModal.showModal = true;
             showModal.x = new Date().getTime();
             return dispatch( showModal );
         }
@@ -48,14 +47,14 @@ export const ModalDialog = connectedModal(
         render() {
             console.log("props in modal: ", this.props );
             return (
-                // this.props.closeModalHandler
+
                 <Modal show={this.props.showModal} onHide={() => this.props.modalAction(this.props)}>
                     <Modal.Header closeButton>
-                        {/*<Modal.Title>{this.props.modalTitle}</Modal.Title>*/}
+                        <Modal.Title>{this.props.messages.title}</Modal.Title>
                     </Modal.Header>
 
-                    <Modal.Body>hi</Modal.Body>
-                    {/*{ReactHtmlParser(this.props.modalBody)}*/}
+                    <Modal.Body>{ReactHtmlParser(this.props.messages.body)}</Modal.Body>
+
                     <Modal.Footer>
                         <Button onClick={ () => this.props.modalAction(this.props)}>Close</Button>
                     </Modal.Footer>
@@ -64,4 +63,3 @@ export const ModalDialog = connectedModal(
         }
     }
 );
-//export default ModalDialog;
