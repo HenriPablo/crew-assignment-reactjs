@@ -4,8 +4,8 @@ import persons from "./data/people.json";
 import plane from "./data/plane";
 
 const counter = (state, action) => {
-    //console.log("state: ", state);
-    //console.log("action: ", action);
+    console.log("state: ", state);
+    console.log("action: ", action);
 
     if (state === undefined) {
         return {
@@ -31,7 +31,8 @@ const counter = (state, action) => {
                 count: state.count + 1,
                 nextKey: state.count + 1,
                 ass: [action.ass, ...state.ass],
-                assigned: state.assigned + 1
+                assigned: state.assigned + 1,
+                showModal: state.showModal
             };
 
         case "dropdownSelection":
@@ -54,6 +55,17 @@ const counter = (state, action) => {
                 ass: action.newAss,
                 assigned: state.assigned - 1
             };
+
+        case "showModal":
+        return {
+            ...state,
+            showModal: action.showModal
+        };
+        case "hideModal":
+            return {
+                ...state,
+                showModal: action.showModal
+            }
 
         default:
             return state;

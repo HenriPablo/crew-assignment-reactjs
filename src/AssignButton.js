@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import ModalDialog from "./ModalDailog";
+import { ModalDialog } from "./ModalDailog";
 import ReactDOM from "react-dom";
 
 const mapStateToProps = state => {
@@ -19,9 +19,13 @@ const addAssignment = {
     payload: "ang",
     ass: [],
     nextKey: 0,
-    showModal: false
-
 };
+
+const modal = {
+    type: "showModal",
+    showModal: true,
+    x:0
+}
 
 let closeModal = (e) =>{
 
@@ -32,30 +36,19 @@ const mapDispatchToProps = dispatch => {
     return {
         createAssignment: function(nk, props) {
             if(props.assigned === 4){
-                addAssignment.showModal = true;
-                addAssignment.showModal = true;
+                modal.type = "showModal";
+                modal.showModal = true;
+                modal.x = new Date().getTime();
+                return dispatch(modal);
+            } else {
+                addAssignment.nextKey = nk;
+                addAssignment.ass = {
+                    assignmentKey: nk,
+                    assignedRole: null,
+                    assignedPerson: null
+                };
                 return dispatch(addAssignment);
-
-                //alert("4 seats already assigned");
-
-
-                //alert("4 seats already assigned");
-                //return false;
             }
-
-            addAssignment.nextKey = nk;
-            addAssignment.ass = {
-                //["assignment" + (nk )]:
-                //{
-                assignmentKey: nk,
-                assignedRole: null,
-                assignedPerson: null
-            };
-            //}
-
-            //console.log("addAssignment", addAssignment.ass);
-
-            return dispatch(addAssignment);
         }
     };
 };
@@ -79,12 +72,7 @@ export const AssignButton = connectedButton(
                     </button>
                     {/*<p>Assignments: {this.props.count}</p>*/}
 
-                    <ModalDialog
-                        closeModalHandler={e => closeModal(e)}
-                        show={this.props.showModal}
-                        modalTitle={"Modal Title"}
-                        modalBody={"Assignment at capacity."}
-                    />
+                    <ModalDialog/>
 
                 </div>
             );
