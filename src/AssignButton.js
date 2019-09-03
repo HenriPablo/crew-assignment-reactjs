@@ -9,7 +9,8 @@ const mapStateToProps = state => {
         ass: state.ass,
         nextKey: state.nextKey,
         assigned: state.assigned,
-        showModal: state.showModal
+        showModal: state.showModal,
+        messages: state.messages
     };
 };
 
@@ -68,10 +69,8 @@ export const AssignButton = connectedButton(
                         onClick={() => this.props.createAssignment(this.props.nextKey, this.props)}
                         className="btn btn-primary assign-btn"
                     >
-                        Assign +{" "}
+                        {this.props.messages.btnLbls.createAssignmentBtnLbl}
                     </button>
-                    {/*<p>Assignments: {this.props.count}</p>*/}
-
                     <ModalDialog/>
 
                 </div>

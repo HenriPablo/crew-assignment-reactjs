@@ -1,6 +1,7 @@
 {
   "btnLbls": {
-    "close": "Close"
+    "close": "Close",
+    "createAssignmentBtnLbl": "Create an Assignment +"
   },
 
   "title": "Assignments are at their limit.",

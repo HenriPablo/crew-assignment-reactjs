@@ -8,7 +8,8 @@ const mapStateToProps = state => {
         roles: state.roles,
         nextKey: state.count,
         count: state.count,
-        ass: state.ass
+        ass: state.ass,
+        preferences: state.preferences
     };
 };
 
@@ -50,6 +51,9 @@ export const AssignmentsContainer = connectedContainer(
 
         render() {
             //console.log("this.props in AssignmentsContainer: ", this.props);
+            if( this.props.preferences.alwaysRenderSelf.value === true){
+                return( <div>render SELF assignment by default</div>)
+            }
 
             if (this.props.count > 0) {
                 return (
