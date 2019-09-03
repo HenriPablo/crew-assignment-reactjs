@@ -5,9 +5,30 @@ import plane from "./data/plane";
 import messages from "./data/messages";
 import preferences from "./data/preferences"
 
+
 const counter = (state, action) => {
     console.log("state: ", state);
     console.log("action: ", action);
+
+    let getDefaultPerson = function(){
+        return persons.self;
+    }
+
+    let getDefaultRole = function(){
+        return roles.pic;
+    }
+
+    let defaultAssigment = function(){
+        if( preferences.alwaysRenderSelf.value === true){
+            console.log('trying to create a deafult assignment')
+            return [{
+                "assignedPersons": getDefaultPerson(),
+                "assignedRole": getDefaultRole()
+            }]
+        } else {
+        return [];
+        }
+    }
 
     if (state === undefined) {
         return {
@@ -17,7 +38,7 @@ const counter = (state, action) => {
             preferences: preferences,
             selectionType: "",
             count: 0,
-            ass: [],
+            ass: defaultAssigment(),
             nextKey: 0,
             filterBy: "",
             /** marker updated in Roles and Persons dropdowns to force re-render of those elements  */
