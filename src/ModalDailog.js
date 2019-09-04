@@ -45,7 +45,7 @@ const connectedModal = connect(
 export const ModalDialog = connectedModal(
     class extends Component {
         render() {
-            console.log("props in modal: ", this.props );
+            //console.log("props in modal: ", this.props );
             return (
 
                 <Modal show={this.props.showModal} onHide={() => this.props.modalAction(this.props)}>

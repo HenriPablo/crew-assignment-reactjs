@@ -2,6 +2,6 @@
   "alwaysRenderSelf" : {
     "value" : true,
     "tip" : "Render dropdown selects for Self as pilot and specified role, for example PIC, Student, etc.",
-    "defaultRole" : "PIC"
+    "defaultRole" : "pic"
   }
 }

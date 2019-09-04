@@ -34,6 +34,7 @@ const mapStateToProps = state => {
         ass: state.ass,
         roles: state.roles,
         persons: state.persons,
+        preferences: state.preferences,
         //filteredPersons: state.filteredPersons,
         nextKey: state.nextKey,
         x: state.x
@@ -81,17 +82,36 @@ export const DropdownRoles = connectedDropdownSelect(
         buildDropdownOptions() {
             let y = [];
             Object.keys(this.props.roles).forEach(item => {
-                y.push(<option key={[item][0]} value={[item][0]}>{[item][0]}</option>);
+                // console.log("[item][0]: ", [item][0] );
+                // console.log("[this.props.preferences.alwaysRenderSelf.defaultRole][0]: ", [this.props.preferences.alwaysRenderSelf.defaultRole][0] )
+                // console.log("this.props.preferences.alwaysRenderSelf.value === true: ", this.props.preferences.alwaysRenderSelf.value === true)
+                // console.log("this.props.preferences.alwaysRenderSelf.defaultRole == item[0]: ", [this.props.preferences.alwaysRenderSelf.defaultRole][0] == [item][0]);
+
+                //TODO: rework this using the [0] assignment if we have one
+                //if( this.props.preferences.alwaysRenderSelf.value === true && [this.props.preferences.alwaysRenderSelf.defaultRole][0] == [item][0]){
+                //    y.push(<option key={[item][0]} selected={"selected"} value={[item][0]}>{[item][0]}</option>);
+                //} else {
+                    y.push(<option key={[item][0]} value={[item][0]}>{[item][0]}</option>);
+               // }
+
             });
             return y;
         }
 
+        selectedRole(){
+            if( this.props.rolesKey === 0 ){
+                return this.props.ass[this.props.rolesKey].assignedRole;
+            } else {return ""}
+        }
+
         render() {
-            //console.log("PROPS in ROLES DROPDOWN: ", this.props);
+            console.log("PROPS in ROLES DROPDOWN: ", this.props);
+
             return (
                 <select
                     id={"role-select-" + this.props.rolesKey}
                     name={"role-select-" + this.props.rolesKey}
+                    defaultValue={ this.selectedRole() }
                     onChange={event =>
                         this.props.triggerChange(
                             event,

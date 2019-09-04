@@ -15,19 +15,35 @@ const counter = (state, action) => {
     }
 
     let getDefaultRole = function(){
-        return roles.pic;
+        return preferences.alwaysRenderSelf.defaultRole; //roles.pic;
     }
 
     let defaultAssigment = function(){
         if( preferences.alwaysRenderSelf.value === true){
             console.log('trying to create a deafult assignment')
             return [{
-                "assignedPersons": getDefaultPerson(),
-                "assignedRole": getDefaultRole()
+                "assignedPerson": getDefaultPerson(),
+                "assignedRole": getDefaultRole(),
+                "assignmentKey": 0
             }]
         } else {
         return [];
         }
+    }
+
+    // advance the nextKey if we're rendering a default assignment with pre-selected values on the first page load
+    let getNextKey = function(){
+        if( preferences.alwaysRenderSelf.value === true){
+            return 1;
+        } else {
+            return  0;
+        }
+    }
+
+    let getCount = function(){
+        if(preferences.alwaysRenderSelf.value === true ){
+            return 1;
+        } else { return 0 }
     }
 
     if (state === undefined) {
@@ -37,9 +53,9 @@ const counter = (state, action) => {
             messages: messages,
             preferences: preferences,
             selectionType: "",
-            count: 0,
+            count: getCount(),//0,
             ass: defaultAssigment(),
-            nextKey: 0,
+            nextKey: getNextKey(),// 0,
             filterBy: "",
             /** marker updated in Roles and Persons dropdowns to force re-render of those elements  */
             x: new Date().getTime(),
