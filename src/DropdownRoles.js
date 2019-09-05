@@ -35,7 +35,6 @@ const mapStateToProps = state => {
         roles: state.roles,
         persons: state.persons,
         preferences: state.preferences,
-        //filteredPersons: state.filteredPersons,
         nextKey: state.nextKey,
         x: state.x
     };
