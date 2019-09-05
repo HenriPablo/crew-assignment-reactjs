@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="90ccbfe4-0586-4b08-8377-6238a2bfa006" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssignButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssignButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -83,6 +82,11 @@
       <workItem from="1566912895596" duration="584000" />
       <workItem from="1566913521397" duration="3974000" />
       <workItem from="1566928752690" duration="4130000" />
+      <workItem from="1567084611217" duration="3224000" />
+      <workItem from="1567517113430" duration="32000" />
+      <workItem from="1567517212710" duration="2655000" />
+      <workItem from="1567528035447" duration="12625000" />
+      <workItem from="1567688728646" duration="5337000" />
     </task>
     <task id="LOCAL-00001" summary="added time stamp marker to force update redraw of Roles and Persons dropdowns, misc cleanup.">
       <created>1566922342572</created>
@@ -91,7 +95,42 @@
       <option name="project" value="LOCAL" />
       <updated>1566922342573</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="tryingt to add a modal that will work with redux">
+      <created>1567026240363</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1567026240363</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Cleaned up the modal.">
+      <created>1567098200920</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1567098200920</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Trying to add a default assignment">
+      <created>1567543784538</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1567543784538</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Trying to add a default assignment">
+      <created>1567634193622</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1567634193622</updated>
+    </task>
+    <task id="LOCAL-00006" summary="phase 1 done ;-)">
+      <created>1567696052408</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1567696052408</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -112,7 +151,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added time stamp marker to force update redraw of Roles and Persons dropdowns, misc cleanup." />
-    <option name="LAST_COMMIT_MESSAGE" value="added time stamp marker to force update redraw of Roles and Persons dropdowns, misc cleanup." />
+    <MESSAGE value="tryingt to add a modal that will work with redux" />
+    <MESSAGE value="Cleaned up the modal." />
+    <MESSAGE value="Trying to add a default assignment" />
+    <MESSAGE value="phase 1 done ;-)" />
+    <option name="LAST_COMMIT_MESSAGE" value="phase 1 done ;-)" />
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
     <General>

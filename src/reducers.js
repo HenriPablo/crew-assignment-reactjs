@@ -32,6 +32,12 @@ const counter = (state, action) => {
         }
     }
 
+    let getAssigned = function(){
+        if( preferences.alwaysRenderSelf.value === true){
+            return 1;
+        } else { return 0; }
+    }
+
     // advance the nextKey if we're rendering a default assignment with pre-selected values on the first page load
     let getNextKey = function(){
         if( preferences.alwaysRenderSelf.value === true){
@@ -61,7 +67,7 @@ const counter = (state, action) => {
             /** marker updated in Roles and Persons dropdowns to force re-render of those elements  */
             x: new Date().getTime(),
             maxAssignments: plane.seats,
-            assigned: 0,
+            assigned: getAssigned(),
             showModal: false
         }
     }
