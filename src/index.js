@@ -1,3 +1,5 @@
+import "core-js/stable";                /* for babel polyfill - IE11 */
+import "regenerator-runtime/runtime";   /* for babel polyfill - IE11 */
 import React from "react";
 import ReactDOM from "react-dom";
 import { createStore } from "redux";
