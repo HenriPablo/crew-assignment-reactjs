@@ -1,6 +1,10 @@
 // Reducer
 import roles from "./data/roles.json";
-import persons from "./data/people.json";
+//import roles from "./data/roles2.json"
+
+//import persons from "./data/people.json";
+import persons from "./data/people2.json";
+
 import plane from "./data/plane";
 import messages from "./data/messages";
 import preferences from "./data/preferences"

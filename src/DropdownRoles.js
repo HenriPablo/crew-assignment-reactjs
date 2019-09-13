@@ -3,15 +3,28 @@ import { connect } from "react-redux";
 
 var filterPersons = (type, persons) => {
     var x = {};
-    //console.log("persons: ", persons);
+    console.log("persons: ", persons);
     //console.log("object.keys:", Object.keys(persons));
 
-    Object.keys(persons).forEach(item => {
-        //console.log("item: ", item);
-        if (persons[item].includes(type)) {
-            x[item] = persons[item];
+    for( let i = 0; i < persons.length; i++ ){
+
+        if( persons[i]["roles"].includes( 59 ))
+        {
+            /** TODO: replace first name with Person ID */
+            x[persons[i].first_name] = persons[i]
         }
-    });
+    }
+    console.log("filtered persons: ", x);
+
+    // Object.keys(persons).forEach(item => {
+    //
+    //     console.log("item: ", item);
+    //     if (persons[item].includes(type)) {
+    //         x[item] = persons[item];
+    //     }
+    // });
+
+
     //console.log("filtered persons: ", x);
     return x;
 };
