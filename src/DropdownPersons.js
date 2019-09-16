@@ -91,7 +91,12 @@ export const DropdownPersons = connectedDropdownSelect(
                         this.props.ass[i].assignedPersons !== null
                     )
                     {
-                        x = this.props.ass[i].assignedPersons;
+                        //x = this.props.ass[i].assignedPersons;
+
+                        y.push(<option
+                            key={this.props.ass[i].assignedPersons.id}
+                            value={this.props.ass[i].assignedPersons.id}
+                        >{this.props.ass[i].assignedPersons.first_name} {this.props.ass[i].assignedPersons.last_name}</option>);
                     }
                     else if( typeof this.props.ass[i].assignedPersons !== "undefined" )
                     {
@@ -107,7 +112,7 @@ export const DropdownPersons = connectedDropdownSelect(
                     //console.log("X in typeof x !== \"undefined\" in PERSONS: ",  x );
                     //Object.keys( x ).forEach(item => {
                         //console.log("ITEM: ", item)
-                        y.push(<option key={x.id} value={x.id}>{x.first_name}</option>);
+                       // y.push(<option key={x.id} value={x.id}>{x.first_name}</option>);
                     //});
 
                     //for( )

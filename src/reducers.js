@@ -11,8 +11,8 @@ import preferences from "./data/preferences"
 
 
 const counter = (state, action) => {
-    console.log("state: ", state);
-    console.log("action: ", action);
+    //console.log("state: ", state);
+    //console.log("action: ", action);
 
     let getDefaultPerson = function(){
         //return preferences.alwaysRenderSelf.defaultPerson; //persons.self;
@@ -31,7 +31,7 @@ const counter = (state, action) => {
 
     let defaultAssigment = function(){
         if( preferences.alwaysRenderSelf.value === true){
-            console.log('trying to create a deafult assignment')
+            //console.log('trying to create a deafult assignment')
             return [{
                 "assignedPerson": getDefaultPerson(),
                 "assignedPersons": getDefaultPerson(),// { [preferences.alwaysRenderSelf.defaultPerson] : persons.self },
