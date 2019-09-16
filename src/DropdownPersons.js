@@ -69,33 +69,50 @@ export const DropdownPersons = connectedDropdownSelect(
             let y = [];
 
             console.log("this.props.ass.length: ", this.props.ass.length);
+            console.log("this.props.ass: ", this.props.ass)
 
+            /** add default person to dropdown by preference value */
             if( this.props.preferences.alwaysRenderSelf.value === true && this.props.ass.length === 1)
             {
                 y.push(<option
-                    //key={this.props.preferences.alwaysRenderSelf.defaultPerson}
-                    //value={this.props.preferences.alwaysRenderSelf.defaultPerson}>
-                    //{this.props.preferences.alwaysRenderSelf.defaultPerson}
+                    key={this.props.ass[0].assignedPerson.id}
+                    value={this.props.ass[0].assignedPerson.id}
+                    >{this.props.ass[0].assignedPerson.first_name} {this.props.ass[0].assignedPerson.last_name}</option>);
+            }
 
-                    key={this.props.ass[0].assignedPerson}
-                    value={this.props.ass[0].assignedPerson}
-                    >{this.props.ass[0].assignedPerson}</option>);
-            } else
+            //else if( this.props.)
+
+            else
             {
                 console.log("props BEFORE loop in persons: ", this.props.ass )
                 for (let i = 0; i < this.props.ass.length; i++) {
                     if (
                         this.props.ass[i].assignmentKey === this.props.personsKey &&
                         this.props.ass[i].assignedPersons !== null
-                    ) {
+                    )
+                    {
                         x = this.props.ass[i].assignedPersons;
+                    }
+                    else if( typeof this.props.ass[i].assignedPersons !== "undefined" )
+                    {
+                        y.push(<option
+                            key={this.props.ass[i].assignedPersons.id}
+                            value={this.props.ass[i].assignedPersons.id}
+                        >{this.props.ass[i].assignedPersons.first_name} {this.props.ass[i].assignedPersons.last_name}</option>);
                     }
                 }
 
                 if (typeof x !== "undefined") {
-                    Object.keys( x ).forEach(item => {
-                        y.push(<option key={[item][0]} value={[item][0]}>{[item][0]}</option>);
-                    });
+
+                    //console.log("X in typeof x !== \"undefined\" in PERSONS: ",  x );
+                    //Object.keys( x ).forEach(item => {
+                        //console.log("ITEM: ", item)
+                        y.push(<option key={x.id} value={x.id}>{x.first_name}</option>);
+                    //});
+
+                    //for( )
+
+
                 }
             } // end else
 
@@ -105,8 +122,9 @@ export const DropdownPersons = connectedDropdownSelect(
         }
 
         selectedPerson(){
-            if( this.props.personsKey === 0 ){
-                return this.props.ass[this.props.personsKey].assignedPerson;
+            if( this.props.personsKey === 0 && this.props.ass[this.props.personsKey].assignedPerson != null ){
+                //console.log("this.props.ass[this.props.personsKey].assignedPerson.id: ", this.props.ass[this.props.personsKey].assignedPerson.id)
+                return this.props.ass[this.props.personsKey].assignedPerson.id;
             } else { return "" }
         }
 

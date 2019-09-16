@@ -13,11 +13,6 @@ const deleteAss = (deleteKey, ass) => {
     //console.log("ass in deleteAss: ", ass);
 
     var x = ass.filter(function(item) {
-        //console.log("item in deleteAss: ", item);
-        //console.log(
-        //"ass.assignmentKey !== deleteKey: ",
-        //parseInt(item.assignmentKey) !== parseInt(deleteKey)
-        //);
         return parseInt(item.assignmentKey) !== parseInt(deleteKey);
     });
     //console.log("x in deleteAss: ", x);

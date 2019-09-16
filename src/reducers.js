@@ -15,7 +15,14 @@ const counter = (state, action) => {
     console.log("action: ", action);
 
     let getDefaultPerson = function(){
-        return preferences.alwaysRenderSelf.defaultPerson; //persons.self;
+        //return preferences.alwaysRenderSelf.defaultPerson; //persons.self;
+        for( let i = 0; i < persons.length; i++ ){
+            //console.log( "reducer persons[i]: ", persons[i]);
+            if( persons[i].self === "true" ){
+                //console.log( "reducer persons[i]: ", persons[i]);
+                return persons[i];
+            }
+        }
     }
 
     let getDefaultRole = function(){
@@ -27,7 +34,7 @@ const counter = (state, action) => {
             console.log('trying to create a deafult assignment')
             return [{
                 "assignedPerson": getDefaultPerson(),
-                "assignedPersons": { [preferences.alwaysRenderSelf.defaultPerson] : persons.self },
+                "assignedPersons": getDefaultPerson(),// { [preferences.alwaysRenderSelf.defaultPerson] : persons.self },
                 "assignedRole": getDefaultRole(),
                 "assignmentKey": 0
             }]

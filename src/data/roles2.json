@@ -4,5 +4,6 @@
   {"id":61,"role":"EXAMINER"},
   {"id":86,"role":"SIC"},
   {"id":62,"role":"CFII"},
-  {"id":87,"role":"CFI"}
+  {"id":87,"role":"CFI"},
+  {"id":88,"role": "STUDENT"}
 ]
