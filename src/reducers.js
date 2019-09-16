@@ -1,6 +1,6 @@
 // Reducer
-import roles from "./data/roles.json";
-//import roles from "./data/roles2.json"
+//import roles from "./data/roles.json";
+import roles from "./data/roles2.json"
 
 //import persons from "./data/people.json";
 import persons from "./data/people2.json";

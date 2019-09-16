@@ -6,9 +6,11 @@ var filterPersons = (type, persons) => {
     console.log("persons: ", persons);
     //console.log("object.keys:", Object.keys(persons));
 
+    console.log("type in roles dropdown: ", type);
+
     for( let i = 0; i < persons.length; i++ ){
 
-        if( persons[i]["roles"].includes( 59 ))
+        if( persons[i]["roles"].includes( type ))
         {
             /** TODO: replace first name with Person ID */
             x[persons[i].first_name] = persons[i]
@@ -93,7 +95,7 @@ export const DropdownRoles = connectedDropdownSelect(
     class extends Component {
         buildDropdownOptions() {
             let y = [];
-            Object.keys(this.props.roles).forEach(item => {
+           // Object.keys(this.props.roles).forEach(item => {
                 // console.log("[item][0]: ", [item][0] );
                 // console.log("[this.props.preferences.alwaysRenderSelf.defaultRole][0]: ", [this.props.preferences.alwaysRenderSelf.defaultRole][0] )
                 // console.log("this.props.preferences.alwaysRenderSelf.value === true: ", this.props.preferences.alwaysRenderSelf.value === true)
@@ -103,10 +105,13 @@ export const DropdownRoles = connectedDropdownSelect(
                 //if( this.props.preferences.alwaysRenderSelf.value === true && [this.props.preferences.alwaysRenderSelf.defaultRole][0] == [item][0]){
                 //    y.push(<option key={[item][0]} selected={"selected"} value={[item][0]}>{[item][0]}</option>);
                 //} else {
-                    y.push(<option key={[item][0]} value={[item][0]}>{[item][0]}</option>);
+                    //y.push(<option key={[item][0]} value={[item][0]}>{[item][0]}</option>);
                // }
 
-            });
+           // });
+            for( let i = 0; i < this.props.roles.length; i++){
+                y.push( <option key={this.props.roles[i]["id"]} value={this.props.roles[i]["id"]}>{this.props.roles[i]["role"]}</option> )
+            }
             return y;
         }
 
