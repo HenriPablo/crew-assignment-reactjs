@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 
 var filterPersons = (type, persons) => {
     var x = {};
-    console.log("persons: ", persons);
+    //console.log("persons: ", persons);
     //console.log("object.keys:", Object.keys(persons));
 
-    console.log("type in roles dropdown: ", type);
+    //console.log("type in roles dropdown: ", type);
 
     for( let i = 0; i < persons.length; i++ ){
 
@@ -16,7 +16,7 @@ var filterPersons = (type, persons) => {
             x[persons[i].first_name] = persons[i]
         }
     }
-    console.log("filtered persons: ", x);
+    //console.log("filtered persons: ", x);
 
     //console.log("filtered persons: ", x);
     return x;
@@ -84,6 +84,7 @@ const connectedDropdownSelect = connect(
 
 export const DropdownRoles = connectedDropdownSelect(
     class extends Component {
+
         buildDropdownOptions() {
             let y = [];
             for( let i = 0; i < this.props.roles.length; i++){
@@ -99,7 +100,7 @@ export const DropdownRoles = connectedDropdownSelect(
         }
 
         render() {
-            console.log("PROPS in ROLES DROPDOWN: ", this.props);
+            //console.log("PROPS in ROLES DROPDOWN: ", this.props);
 
             return (
                 <select

@@ -68,12 +68,13 @@ export const DropdownPersons = connectedDropdownSelect(
             let x = {};
             let y = [];
 
-            console.log("this.props.ass.length: ", this.props.ass.length);
-            console.log("this.props.ass: ", this.props.ass)
+            //console.log("this.props.ass.length: ", this.props.ass.length);
+            //console.log("this.props.ass: ", this.props.ass)
 
             /** add default person to dropdown by preference value */
             if( this.props.preferences.alwaysRenderSelf.value === true && this.props.ass.length === 1)
             {
+                console.log("1st IF");
                 y.push(<option
                     key={this.props.ass[0].assignedPerson.id}
                     value={this.props.ass[0].assignedPerson.id}
@@ -84,22 +85,32 @@ export const DropdownPersons = connectedDropdownSelect(
 
             else
             {
+                console.log("1st ELSE");
                 console.log("props BEFORE loop in persons: ", this.props.ass )
+
                 for (let i = 0; i < this.props.ass.length; i++) {
+                    console.log("1st LOOP");
+                    console.log("typeof this.props.ass[i].assignedPersons: ", typeof this.props.ass[i].assignedPersons);
+
                     if (
-                        this.props.ass[i].assignmentKey === this.props.personsKey &&
-                        this.props.ass[i].assignedPersons !== null
+                        this.props.ass[i].assignmentKey === this.props.personsKey// &&
+                        //typeof  this.props.ass[i].assignedPersons !== "undefined"
                     )
                     {
-                        //x = this.props.ass[i].assignedPersons;
+                        console.log("2ND IF");
+                        console.log("props in 2ND IF: ", this.props)
+                        x = this.props.ass[i].assignedPersons;
 
-                        y.push(<option
-                            key={this.props.ass[i].assignedPersons.id}
-                            value={this.props.ass[i].assignedPersons.id}
-                        >{this.props.ass[i].assignedPersons.first_name} {this.props.ass[i].assignedPersons.last_name}</option>);
+                        // y.push(<option
+                        //     key={this.props.ass[i].assignedPersons.id}
+                        //     value={this.props.ass[i].assignedPersons.id}
+                        // >{this.props.ass[i].assignedPersons.first_name} {this.props.ass[i].assignedPersons.last_name}</option>);
                     }
+
                     else if( typeof this.props.ass[i].assignedPersons !== "undefined" )
                     {
+                        console.log("2nd ELSE");
+                        console.log("props in 2nd ELSE: ", this.props)
                         y.push(<option
                             key={this.props.ass[i].assignedPersons.id}
                             value={this.props.ass[i].assignedPersons.id}
@@ -108,16 +119,15 @@ export const DropdownPersons = connectedDropdownSelect(
                 }
 
                 if (typeof x !== "undefined") {
+                    console.log("3rd IF");
 
-                    //console.log("X in typeof x !== \"undefined\" in PERSONS: ",  x );
-                    //Object.keys( x ).forEach(item => {
-                        //console.log("ITEM: ", item)
-                       // y.push(<option key={x.id} value={x.id}>{x.first_name}</option>);
-                    //});
+                    console.log("X in typeof x !== \"undefined\" in PERSONS: ",  x );
+                    Object.keys( x ).forEach(item => {
+                        console.log("ITEM: ", item)
+                       y.push(<option key={x.id} value={x.id}>{x.first_name}</option>);
+                    });
 
                     //for( )
-
-
                 }
             } // end else
 
@@ -134,7 +144,7 @@ export const DropdownPersons = connectedDropdownSelect(
         }
 
         render() {
-            console.log("this.props in RENDER() DRPD PERSONS: ", this.props);
+            //console.log("this.props in RENDER() DRPD PERSONS: ", this.props);
             return (
                 <select
                     id={"person-select-" + this.props.personsKey}

@@ -11,8 +11,8 @@ import preferences from "./data/preferences"
 
 
 const counter = (state, action) => {
-    //console.log("state: ", state);
-    //console.log("action: ", action);
+    console.log("state: ", state);
+    console.log("action: ", action);
 
     let getDefaultPerson = function(){
         //return preferences.alwaysRenderSelf.defaultPerson; //persons.self;
