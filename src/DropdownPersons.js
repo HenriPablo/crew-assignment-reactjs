@@ -65,14 +65,20 @@ export const DropdownPersons = connectedDropdownSelect(
     class extends Component {
         buildDropdownOptions() {
             //console.log("props in DROPDOWN PERSONS:", this.props);
-            let x = {};
+            //let x = {}; this was just a transfer object when we had to iterte over the KEYs
             let y = [];
 
             //console.log("this.props.ass.length: ", this.props.ass.length);
             //console.log("this.props.ass: ", this.props.ass)
 
             /** add default person to dropdown by preference value */
-            if( this.props.preferences.alwaysRenderSelf.value === true && this.props.ass.length === 1)
+            if(
+                this.props.preferences.alwaysRenderSelf.value === true && this.props.ass.length === 1
+                ||
+                (this.props.preferences.alwaysRenderSelf.value === true && this.props.personsKey === 0
+                &&
+                this.props.ass[0].assignedPerson !== null)
+            )
             {
                 console.log("1st IF");
                 y.push(<option
@@ -80,8 +86,6 @@ export const DropdownPersons = connectedDropdownSelect(
                     value={this.props.ass[0].assignedPerson.id}
                     >{this.props.ass[0].assignedPerson.first_name} {this.props.ass[0].assignedPerson.last_name}</option>);
             }
-
-            //else if( this.props.)
 
             else
             {
@@ -93,42 +97,36 @@ export const DropdownPersons = connectedDropdownSelect(
                     console.log("typeof this.props.ass[i].assignedPersons: ", typeof this.props.ass[i].assignedPersons);
 
                     if (
-                        this.props.ass[i].assignmentKey === this.props.personsKey// &&
-                        //typeof  this.props.ass[i].assignedPersons !== "undefined"
+                        this.props.ass[i].assignmentKey === this.props.personsKey &&
+                        typeof  this.props.ass[i].assignedPersons !== "undefined"
+                        //this.props.ass[i].assignedPersons !== null
                     )
                     {
                         console.log("2ND IF");
                         console.log("props in 2ND IF: ", this.props)
-                        x = this.props.ass[i].assignedPersons;
+                        //x = this.props.ass[i].assignedPersons;
 
-                        // y.push(<option
-                        //     key={this.props.ass[i].assignedPersons.id}
-                        //     value={this.props.ass[i].assignedPersons.id}
-                        // >{this.props.ass[i].assignedPersons.first_name} {this.props.ass[i].assignedPersons.last_name}</option>);
-                    }
+                        for( let ii = 0; ii < this.props.ass[i].assignedPersons.length; ii++ ){
+                            y.push(<option
+                                key={this.props.ass[i].assignedPersons[ii].id}
+                                value={this.props.ass[i].assignedPersons[ii].id}
+                            >{this.props.ass[i].assignedPersons[ii].first_name} {this.props.ass[i].assignedPersons[ii].last_name}</option>);
+                        }
 
-                    else if( typeof this.props.ass[i].assignedPersons !== "undefined" )
-                    {
-                        console.log("2nd ELSE");
-                        console.log("props in 2nd ELSE: ", this.props)
-                        y.push(<option
-                            key={this.props.ass[i].assignedPersons.id}
-                            value={this.props.ass[i].assignedPersons.id}
-                        >{this.props.ass[i].assignedPersons.first_name} {this.props.ass[i].assignedPersons.last_name}</option>);
                     }
                 }
 
-                if (typeof x !== "undefined") {
-                    console.log("3rd IF");
-
-                    console.log("X in typeof x !== \"undefined\" in PERSONS: ",  x );
-                    Object.keys( x ).forEach(item => {
-                        console.log("ITEM: ", item)
-                       y.push(<option key={x.id} value={x.id}>{x.first_name}</option>);
-                    });
+                //if (typeof x !== "undefined") {
+                    // console.log("3rd IF");
+                    //
+                    // console.log("X in typeof x !== \"undefined\" in PERSONS: ",  x );
+                    // Object.keys( x ).forEach(item => {
+                    //     console.log("ITEM: ", item)
+                    //    y.push(<option key={x.id} value={x.id}>{x.first_name}</option>);
+                    //});
 
                     //for( )
-                }
+                //}
             } // end else
 
 

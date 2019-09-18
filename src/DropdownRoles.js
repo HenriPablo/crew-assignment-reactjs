@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 var filterPersons = (type, persons) => {
-    var x = {};
+    var x =[];// {};
+    //var y = [];
     //console.log("persons: ", persons);
     //console.log("object.keys:", Object.keys(persons));
 
@@ -13,7 +14,8 @@ var filterPersons = (type, persons) => {
         if( persons[i]["roles"].includes( type ))
         {
             /** TODO: replace first name with Person ID */
-            x[persons[i].first_name] = persons[i]
+            //x[persons[i].first_name] = persons[i]
+            x.push( persons[i]);
         }
     }
     //console.log("filtered persons: ", x);
