@@ -72,12 +72,21 @@ export const DropdownPersons = connectedDropdownSelect(
             //console.log("this.props.ass: ", this.props.ass)
 
             /** add default person to dropdown by preference value */
+            console.log("this.props.preferences.alwaysRenderSelf.value: ", this.props.preferences.alwaysRenderSelf.value);
+            console.log("this.props.personsKey: ", this.props.personsKey );
+            console.log("this.props.personsKey === 0: ", this.props.personsKey === 0 );
+            console.log("this.props.ass[0].assignedPerson !== null: ", this.props.ass[0].assignedPerson !== null);
+            console.log("this.props.ass[0].assignmentKey: ", this.props.ass[0].assignmentKey);
+
             if(
+                /** initoal app load */
                 this.props.preferences.alwaysRenderSelf.value === true && this.props.ass.length === 1
-                ||
-                (this.props.preferences.alwaysRenderSelf.value === true && this.props.personsKey === 0
-                &&
-                this.props.ass[0].assignedPerson !== null)
+                || /** subsequent renders */
+                (
+                    this.props.preferences.alwaysRenderSelf.value === true && this.props.ass[0].assignmentKey === 0 //this.props.personsKey === 0
+                    //&&
+                    //this.props.ass[0].assignedPerson !== null
+                )
             )
             {
                 console.log("1st IF");
@@ -87,6 +96,11 @@ export const DropdownPersons = connectedDropdownSelect(
                     >{this.props.ass[0].assignedPerson.first_name} {this.props.ass[0].assignedPerson.last_name}</option>);
             }
 
+            else if( this.props.ass[0].assignmentKey === 0  /*&& this.props.ass[0].assignedPerson !== null .self === "true" */ ){
+                console.log("3rd IF");
+                y.push(<option key={this.props.ass[0].assignedPerson.id} value={this.props.ass[0].assignedPerson.id}>{this.props.ass[0].assignedPerson.first_name}</option>);
+            }
+
             else
             {
                 console.log("1st ELSE");
@@ -94,12 +108,20 @@ export const DropdownPersons = connectedDropdownSelect(
 
                 for (let i = 0; i < this.props.ass.length; i++) {
                     console.log("1st LOOP");
-                    console.log("typeof this.props.ass[i].assignedPersons: ", typeof this.props.ass[i].assignedPersons);
+                    console.log("LOOP COUNT: ", i );
+                    //console.log("typeof this.props.ass[i].assignedPersons: ", typeof this.props.ass[i].assignedPersons);
+                    //console.log("this.props.ass[i].assignedPersons: ", this.props.ass[i].assignedPersons);
 
+
+                    console.log("this.props.ass[i].assignedPerson !== null: ", this.props.ass[i].assignedPerson !== null)
+                    console.log("this.props.ass[i].assignedPerson: ", this.props.ass[i].assignedPerson )
+                    console.log( "this.props.ass[i].assignmentKey: ", this.props.ass[i].assignmentKey );
                     if (
-                        this.props.ass[i].assignmentKey === this.props.personsKey &&
+                   //     this.props.ass[i].assignmentKey !== 0 &&
+                   //     this.props.ass[i].assignmentKey === this.props.personsKey &&
                         typeof  this.props.ass[i].assignedPersons !== "undefined"
-                        //this.props.ass[i].assignedPersons !== null
+                   //     && this.props.ass[i].assignedPersons !== null
+                   //     && this.props.ass[i].assignedPerson !== "true"
                     )
                     {
                         console.log("2ND IF");
@@ -114,6 +136,15 @@ export const DropdownPersons = connectedDropdownSelect(
                         }
 
                     }
+
+                    if (this.props.ass[i].assignedPerson !== null &&  this.props.ass[i].assignmentKey == 0 ){
+                        console.log('ELSE IF 5')
+                       // alert('hi')
+                        y.push(<option key={this.props.ass[i].assignedPerson.id} value={this.props.ass[i].assignedPerson.id}>{this.props.ass[i].assignedPerson.first_name}</option>);
+
+                    }
+
+
                 }
 
                 //if (typeof x !== "undefined") {
