@@ -85,7 +85,7 @@ export const DropdownPersons = connectedDropdownSelect(
                 let a = this.props.ass;
                 for (let i = 0; i < a.length; i++) {
 
-                    if( p.personsKey === 0 && a[i].assignmentKey === 0 ){
+                    if( p.preferences.alwaysRenderSelf.value === true && p.personsKey === 0 && a[i].assignmentKey === 0 ){
                         y.push(
                             <option
                                 key={this.props.ass[i].assignedPerson.id}
@@ -93,7 +93,11 @@ export const DropdownPersons = connectedDropdownSelect(
                                 {this.props.ass[i].assignedPerson.first_name} {this.props.ass[i].assignedPerson.last_name}
                             </option>);
                     }
-                    else if( typeof this.props.ass[i].assignedPersons !== "undefined" && p.personsKey > 0 && a[i].assignmentKey > 0 )
+                    else if(
+                        ( typeof this.props.ass[i].assignedPersons !== "undefined" && p.personsKey > 0 && a[i].assignmentKey > 0 )
+                         ||
+                        ( typeof this.props.ass[i].assignedPersons !== "undefined" && p.personsKey == 0 && a[i].assignmentKey == 0 && p.preferences.alwaysRenderSelf.value === false )
+                    )
                     {
                         if( p.personsKey === a[i].assignmentKey){
                             for( let ii = 0; ii < a[i].assignedPersons.length; ii++ ){

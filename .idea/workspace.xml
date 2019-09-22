@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="90ccbfe4-0586-4b08-8377-6238a2bfa006" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DropdownPersons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/DropdownPersons.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +34,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -87,6 +88,7 @@
       <workItem from="1567517212710" duration="2655000" />
       <workItem from="1567528035447" duration="12625000" />
       <workItem from="1567688728646" duration="5337000" />
+      <workItem from="1568374166085" duration="17415000" />
     </task>
     <task id="LOCAL-00001" summary="added time stamp marker to force update redraw of Roles and Persons dropdowns, misc cleanup.">
       <created>1566922342572</created>
@@ -130,7 +132,28 @@
       <option name="project" value="LOCAL" />
       <updated>1567696052408</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="people json extracted from the laravel project">
+      <created>1568374241718</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1568374241718</updated>
+    </task>
+    <task id="LOCAL-00008" summary="roles json extracted from the laravel project">
+      <created>1568604215062</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1568604215062</updated>
+    </task>
+    <task id="LOCAL-00009" summary="most of Persons Dropdown refactor done">
+      <created>1569114279271</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1569114279271</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,7 +178,10 @@
     <MESSAGE value="Cleaned up the modal." />
     <MESSAGE value="Trying to add a default assignment" />
     <MESSAGE value="phase 1 done ;-)" />
-    <option name="LAST_COMMIT_MESSAGE" value="phase 1 done ;-)" />
+    <MESSAGE value="people json extracted from the laravel project" />
+    <MESSAGE value="roles json extracted from the laravel project" />
+    <MESSAGE value="most of Persons Dropdown refactor done" />
+    <option name="LAST_COMMIT_MESSAGE" value="most of Persons Dropdown refactor done" />
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
     <General>
