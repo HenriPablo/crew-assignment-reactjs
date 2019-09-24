@@ -14,6 +14,16 @@ const counter = (state, action) => {
     //console.log("state: ", state);
     //console.log("action: ", action);
 
+    let loadRoles = function(){
+        /**
+         * some guildes:
+         *      https://www.thegreatcodeadventure.com/react-redux-tutorial-part-iii-async-redux/
+         *      https://blog.jscrambler.com/asynchronous-operations-in-react-redux/
+         *      http://mkumaran.net/2019/bestWayToDoAsyncInReactJsUsingHooks/
+         */
+
+    }
+
     let getDefaultPerson = function(){
         //return preferences.alwaysRenderSelf.defaultPerson; //persons.self;
         for( let i = 0; i < persons.length; i++ ){
