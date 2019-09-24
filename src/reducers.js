@@ -20,6 +20,8 @@ const counter = (state, action) => {
          *      https://www.thegreatcodeadventure.com/react-redux-tutorial-part-iii-async-redux/
          *      https://blog.jscrambler.com/asynchronous-operations-in-react-redux/
          *      http://mkumaran.net/2019/bestWayToDoAsyncInReactJsUsingHooks/
+         *
+         *      https://redux.js.org/advanced/async-actions
          */
 
     }
