@@ -21,6 +21,13 @@ const rootElement = document.getElementById("root");
 
  */
 
+/**
+ * ajax guides:
+ *      https://github.com/zalmoxisus/redux-devtools-extension
+ *      https://medium.com/@adlusk/a-newbs-guide-to-redux-saga-e597d8e6c486
+ *
+ */
+
 ReactDOM.render(
     <Provider store={store}>
         <AssignButton />
