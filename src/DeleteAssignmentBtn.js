@@ -13,6 +13,8 @@ const deleteAss = (deleteKey, ass) => {
     //console.log("ass in deleteAss: ", ass);
 
     var x = ass.filter(function(item) {
+        //console.log( "assig Key in deleteAss filter: ", item.assignmentKey )
+        //console.log("delete key in deleteAss filter: ", deleteKey )
         return parseInt(item.assignmentKey) !== parseInt(deleteKey);
     });
     //console.log("x in deleteAss: ", x);
@@ -57,7 +59,7 @@ export const DeleteAssignmentBtn = connectedDeleteButton(
                     }
                 >
                     <strong>X</strong>
-                    {/* X delete key: {this.props.deleteKey} */}
+                    {/*<span> X delete key: {this.props.deleteKey} </span>*/}
                 </button>
             );
         }

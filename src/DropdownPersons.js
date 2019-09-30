@@ -70,6 +70,8 @@ export const DropdownPersons = connectedDropdownSelect(
             if(
                 /** initoal app load */
                 this.props.preferences.alwaysRenderSelf.value === true && this.props.ass.length === 1
+                && this.props.ass[0].assignedPerson !== null
+
             )
             {
                 //console.log("1st IF");
