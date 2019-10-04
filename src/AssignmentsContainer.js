@@ -51,8 +51,9 @@ export const AssignmentsContainer = connectedContainer(
 
         render() {
             if (this.props.count > 0) {
+                this.props.increaseCount();
                 return (
-                    <div className={"assignmentContainer"} key={"assContainer123"}>
+                    <div  className={"assignmentContainer"} key={"assContainer123"}>
                         {this.buildAssignments()}
                     </div>
                 );

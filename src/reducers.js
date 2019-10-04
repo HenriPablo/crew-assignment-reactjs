@@ -11,8 +11,8 @@ import preferences from "./data/preferences"
 
 
 const counter = (state, action) => {
-    //console.log("state: ", state);
-    //console.log("action: ", action);
+    console.log("state: ", state);
+    console.log("action: ", action);
 
     let loadRoles = function(){
         /**

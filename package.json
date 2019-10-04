@@ -9,7 +9,8 @@
     "react-html-parser": "^2.0.2",
     "react-redux": "^7.1.0",
     "react-scripts": "2.1.8",
-    "redux": "^4.0.4"
+    "redux": "^4.0.4",
+    "redux-saga": "^1.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -25,5 +26,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.8"
+  }
 }
