@@ -96,6 +96,19 @@ const counter = (state, action) => {
     }
 
     switch (action.type) {
+        case 'GET_ROLES' :
+            return {
+                ...state,
+                loading: true
+            };
+
+        case 'ROLES_RECEIVED' :
+            return {
+                ...state,
+                roles: action.json,
+                loading: false
+            };
+
         case "assign":
             return {
                 ...state,

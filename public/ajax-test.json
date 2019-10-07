@@ -1,3 +1,10 @@
-{
-  "message" : "We have main Bus-B undervolt"
-}
+[
+  {"id":0, "role": "CopCom"},
+  {"id":59,"role":"PIC"},
+  {"id":60,"role":"SAFETY PILOT"},
+  {"id":61,"role":"EXAMINER"},
+  {"id":86,"role":"SIC"},
+  {"id":62,"role":"CFII"},
+  {"id":87,"role":"CFI"},
+  {"id":88,"role": "STUDENT"}
+]

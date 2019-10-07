@@ -13,7 +13,7 @@ import AssignmentsContainer from "./AssignmentsContainer";
 import reducer from "./reducers";
 import "./index.css";
 
-import rootSaga from'./sagas/index';
+import rootSaga from'./sagas/Saga';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -41,6 +41,11 @@ sagaMiddleware.run(rootSaga);
  *
  * MIDDLEWAREW TUTOTRIAL - scroll down to get it it
  *      https://www.valentinog.com/blog/redux/
+ *
+ *
+ * Best working saga example yet:
+ *      https://medium.com/@lavitr01051977/make-your-first-call-to-api-using-redux-saga-15aa995df5b6
+ *      https://github.com/Lavitr/React-Redux-SAGA-tutorial-APP/tree/master/src
  */
 
 ReactDOM.render(
