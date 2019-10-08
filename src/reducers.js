@@ -78,7 +78,7 @@ const counter = (state, action) => {
 
     if (state === undefined) {
         return {
-            roles: roles,
+            roles: null,
             persons: persons,
             messages: messages,
             preferences: preferences,

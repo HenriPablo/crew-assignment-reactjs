@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { ModalDialog } from "./ModalDailog";
-import ReactDOM from "react-dom";
 
 const mapStateToProps = state => {
     return {
+        roles: state.roles,
         count: state.count,
         ass: state.ass,
         nextKey: state.nextKey,
@@ -41,7 +41,8 @@ const mapDispatchToProps = dispatch => {
                 modal.showModal = true;
                 modal.x = new Date().getTime();
                 return dispatch(modal);
-            } else {
+            }
+            else {
                 addAssignment.nextKey = nk;
                 addAssignment.ass = {
                     assignmentKey: nk,

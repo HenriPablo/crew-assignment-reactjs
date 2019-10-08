@@ -14,19 +14,9 @@ const mapStateToProps = state => {
     };
 };
 
-// Action
-// const getRoles = {
-//     type: "GET_ROLES"
-// };
-
 // Map Redux actions to component props
-const mapDispatchToProps = /*dispatch =>*/ {
+const mapDispatchToProps = {
     getRoles: getRoles,
-    // return {
-    //     getRoles: function() {
-    //         return dispatch(getRoles);
-    //     }
-    //};
 };
 
 const connectedContainer = connect(
@@ -37,6 +27,13 @@ const connectedContainer = connect(
 export const AssignmentsContainer = connectedContainer(
     class extends Component {
         buildAssignments = () => {
+            console.log("this.props.roles === null: ", this.props.roles === null);
+
+            if( this.props.roles === null ){
+                this.props.getRoles();
+                return null;
+            }
+
             var x = [];
             Object.keys(this.props.ass).forEach(item => {
                 //console.log("item in Ass container: ", item);
@@ -53,9 +50,6 @@ export const AssignmentsContainer = connectedContainer(
 
         render() {
             if (this.props.count > 0) {
-
-                this.props.getRoles();
-
                 return (
                     <div  className={"assignmentContainer"} key={"assContainer123"}>
                         {this.buildAssignments()}
