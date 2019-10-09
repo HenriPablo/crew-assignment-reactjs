@@ -1,30 +1,13 @@
 // Reducer
 //import roles from "./data/roles.json";
-import roles from "./data/roles2.json"
-
-//import persons from "./data/people.json";
-import persons from "./data/people2.json";
-
-import plane from "./data/plane";
-import messages from "./data/messages";
-import preferences from "./data/preferences"
-
+import persons from "../data/people2.json";
+import plane from "../data/plane";
+import messages from "../data/messages";
+import preferences from "../data/preferences"
 
 const counter = (state, action) => {
     console.log("state: ", state);
     console.log("action: ", action);
-
-    let loadRoles = function(){
-        /**
-         * some guildes:
-         *      https://www.thegreatcodeadventure.com/react-redux-tutorial-part-iii-async-redux/
-         *      https://blog.jscrambler.com/asynchronous-operations-in-react-redux/
-         *      http://mkumaran.net/2019/bestWayToDoAsyncInReactJsUsingHooks/
-         *
-         *      https://redux.js.org/advanced/async-actions
-         */
-
-    }
 
     let getDefaultPerson = function(){
         //return preferences.alwaysRenderSelf.defaultPerson; //persons.self;

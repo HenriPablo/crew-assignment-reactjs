@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Assignment from "./Assignment";
-import { getRoles } from "./actions";
+import { getRoles } from "../actions";
 
 const mapStateToProps = state => {
     //console.log("state in mapStateToProps in Ass container: ", state);

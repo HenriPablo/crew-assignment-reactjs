@@ -8,10 +8,10 @@ import { Provider } from "react-redux";
 
 import createSagaMiddleware from 'redux-saga';
 
-import { AssignButton } from "./AssignButton";
-import AssignmentsContainer from "./AssignmentsContainer";
-import reducer from "./reducers";
-import "./index.css";
+import { AssignButton } from "./containers/AssignButton";
+import AssignmentsContainer from "./containers/AssignmentsContainer";
+import reducer from "./reducers/reducers";
+import "./css/index.css";
 
 import rootSaga from'./sagas/Saga';
 
