@@ -21,6 +21,8 @@ function* fetchPeople(){
 }
 
 function* selectPeopleActionWatcher(){
+
+
     yield takeLatest("SELECT_PEOPLE", fetchPeople );
 }
 

@@ -63,8 +63,9 @@ const mapDispatchToProps = dispatch => {
     return {
 
         //selectRole: selectRole(),
+        triggerChange : (event, value) => selectRole()
 
-        triggerChange: function(event, value, buildDropdown, persons, props) {
+       /* triggerChange: function(event, value, buildDropdown, persons, props) {
             dropdownSelection.filterBy = value;
             dropdownSelection.filteredByData = buildDropdown;
             let x = filterPersons(value, persons);
@@ -78,7 +79,7 @@ const mapDispatchToProps = dispatch => {
             dropdownSelection.x = new Date().getTime();
             //return dispatch(dropdownSelection);
             return dispatch(selectRole);
-        }
+        }*/
     };
 };
 
