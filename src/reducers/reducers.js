@@ -102,18 +102,26 @@ const counter = (state, action) => {
                 showModal: state.showModal
             };
 
-        case "dropdownSelection":
+        case "SELECT_ROLE":
             return {
                 ...state,
                 ass: action.ass,
-                x: new Date().getTime()
+                x: new Date().getTime(),
+                loading:true
             };
 
-        case "personSelection":
+        case 'PEOPLE_RECEIVED' :
+            return {
+                ...state,
+                persons: action.json,
+                loading: false
+            }
+        case "SELECT_PEOPLE":
             return {
                 ...state,
                 ass: action.ass,
-                x: new Date().getTime()
+                x: new Date().getTime(),
+                loading: true
             };
 
         case "deleteAssignment":

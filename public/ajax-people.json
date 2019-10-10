@@ -1,0 +1,33 @@
+[
+  {
+    "id": "0",
+    "first_name":"Tomasz",
+    "last_name":"Brymora",
+    "roles":"{59,88}",
+    "self":"true"
+  },
+  {
+    "id": "1",
+    "first_name":"Cecily",
+    "last_name":"Lyons",
+    "roles":"{62,87}"
+  },
+  {
+    "id": "2",
+    "first_name":"Rob",
+    "last_name":"Gilchrist",
+    "roles":"{62}"
+  },
+  {
+    "id": "3",
+    "first_name":"Misa",
+    "last_name":"Miguchi",
+    "roles":"{62}"
+  },
+  {
+    "id": "4",
+    "first_name":"Buzz",
+    "last_name":"Aldrin",
+    "roles":"{62}"
+  }
+]
