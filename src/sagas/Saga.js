@@ -14,7 +14,10 @@ function* actionWatcher(){
 }
 
 /** LOAD PEOPLE */
-function* fetchPeople(){
+function* fetchPeople(event, value){
+
+    console.log( "event in Saga: ", event );
+
     const json = yield fetch('http://localhost:3000/ajax-people.json' , {headers : {'Content-Type': 'application/json','Accept': 'application/json'}})
         .then( response => response.json());
     yield put( { type:'PEOPLE_RECEIVED', json: json });

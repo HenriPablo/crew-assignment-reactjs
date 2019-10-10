@@ -59,11 +59,14 @@ const dropdownSelection = {
 };
 
 // Map Redux actions to component props
-const mapDispatchToProps = dispatch => {
-    return {
+//const mapDispatchToProps = dispatch => {
+const mapDispatchToProps =  {
+    selectRole : selectRole
+    //return {
 
         //selectRole: selectRole(),
-        triggerChange : (event, value) => selectRole()
+        //triggerChange : (event, value) => selectRole
+        //selectRole : selectRole
 
        /* triggerChange: function(event, value, buildDropdown, persons, props) {
             dropdownSelection.filterBy = value;
@@ -80,7 +83,7 @@ const mapDispatchToProps = dispatch => {
             //return dispatch(dropdownSelection);
             return dispatch(selectRole);
         }*/
-    };
+    //};
 };
 
 const connectedDropdownSelect = connect(
@@ -114,7 +117,7 @@ export const DropdownRoles = connectedDropdownSelect(
                     name={"role-select-" + this.props.rolesKey}
                     defaultValue={ this.selectedRole() }
                     onChange={event =>
-                        this.props.triggerChange(
+                        this.props.selectRole(
                             event,
                             event.target.value,
                             this.props.buildDropdown,
