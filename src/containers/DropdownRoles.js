@@ -51,7 +51,7 @@ const mapStateToProps = state => {
 
 // Action
 const dropdownSelection = {
-    type: "dropdownSelection",
+    type: "SELECT_ROLE",
     filterBy: "",
     filteredType: "",
     ass: [],
@@ -60,15 +60,17 @@ const dropdownSelection = {
 
 // Map Redux actions to component props
 //const mapDispatchToProps = dispatch => {
-const mapDispatchToProps =  {
-    selectRole : selectRole
-    //return {
+const mapDispatchToProps = dispatch => {
+    //selectRole : selectRole(props)
+    //return
+    //dispatch(selectRole)
+    return {
 
         //selectRole: selectRole(),
         //triggerChange : (event, value) => selectRole
         //selectRole : selectRole
 
-       /* triggerChange: function(event, value, buildDropdown, persons, props) {
+        triggerChange: function(event, value, buildDropdown, persons, props) {
             dropdownSelection.filterBy = value;
             dropdownSelection.filteredByData = buildDropdown;
             let x = filterPersons(value, persons);
@@ -80,11 +82,13 @@ const mapDispatchToProps =  {
                 props.rolesKey
             );
             dropdownSelection.x = new Date().getTime();
-            //return dispatch(dropdownSelection);
-            return dispatch(selectRole);
-        }*/
-    //};
+            return dispatch(dropdownSelection);//{type:"SELECT_ROLE"},
+            //return dispatch(selectRole);
+        }
+    };
 };
+
+
 
 const connectedDropdownSelect = connect(
     mapStateToProps,
@@ -108,6 +112,8 @@ export const DropdownRoles = connectedDropdownSelect(
             } else {return ""}
         }
 
+
+
         render() {
             //console.log("PROPS in ROLES DROPDOWN: ", this.props);
 
@@ -117,7 +123,8 @@ export const DropdownRoles = connectedDropdownSelect(
                     name={"role-select-" + this.props.rolesKey}
                     defaultValue={ this.selectedRole() }
                     onChange={event =>
-                        this.props.selectRole(
+                        this.props.triggerChange(
+                        //this.send(
                             event,
                             event.target.value,
                             this.props.buildDropdown,

@@ -14,19 +14,20 @@ function* actionWatcher(){
 }
 
 /** LOAD PEOPLE */
-function* fetchPeople(event, value){
+function* fetchPeople(action){
 
-    console.log( "event in Saga: ", event );
+    console.log( "action in Saga - fetchPeople method: ", action );
 
     const json = yield fetch('http://localhost:3000/ajax-people.json' , {headers : {'Content-Type': 'application/json','Accept': 'application/json'}})
         .then( response => response.json());
+
     yield put( { type:'PEOPLE_RECEIVED', json: json });
 }
 
 function* selectPeopleActionWatcher(){
 
-
-    yield takeLatest("SELECT_PEOPLE", fetchPeople );
+    //console.log("action in SAGA: ", action );
+    yield takeLatest("SELECT_ROLE", fetchPeople );
 }
 
 export default function* rootSaga(){
