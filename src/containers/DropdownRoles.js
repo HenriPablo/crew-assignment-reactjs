@@ -2,40 +2,29 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { selectRole } from "../actions";
 
-var filterPersons = (type, persons) => {
-    var x =[];// {};
-    //var y = [];
-    //console.log("persons: ", persons);
-    //console.log("object.keys:", Object.keys(persons));
+// var filterPersons = (type, persons) => {
+//     var x =[];
+//     for( let i = 0; i < persons.length; i++ ){
+//
+//         if( persons[i]["roles"].includes( type ))
+//         {
+//             x.push( persons[i]);
+//         }
+//     }
+//     return x;
+// };
 
-    //console.log("type in roles dropdown: ", type);
-
-    for( let i = 0; i < persons.length; i++ ){
-
-        if( persons[i]["roles"].includes( type ))
-        {
-            /** TODO: replace first name with Person ID */
-            //x[persons[i].first_name] = persons[i]
-            x.push( persons[i]);
-        }
-    }
-    //console.log("filtered persons: ", x);
-
-    //console.log("filtered persons: ", x);
-    return x;
-};
-
-var assignPersonsToAss = (role, ass, persons, nk) => {
-    for (let i = 0; i < ass.length; i++) {
-        if (ass[i].assignmentKey === nk) {
-            ass[i].assignedPersons = persons;
-            ass[i].assignedRole = role;
-        }
-    }
-
-    //console.log("ass in assignPersonsToAss: ", ass);
-    return ass;
-};
+// var assignPersonsToAss = (role, ass, persons, nk) => {
+//     for (let i = 0; i < ass.length; i++) {
+//         if (ass[i].assignmentKey === nk) {
+//             ass[i].assignedPersons = persons;
+//             ass[i].assignedRole = role;
+//         }
+//     }
+//
+//     //console.log("ass in assignPersonsToAss: ", ass);
+//     return ass;
+// };
 
 const mapStateToProps = state => {
     return {
@@ -55,7 +44,9 @@ const dropdownSelection = {
     filterBy: "",
     filteredType: "",
     ass: [],
-    x: 0
+    x: 0,
+    persons: null,
+    rolesKey:null
 };
 
 // Map Redux actions to component props
@@ -70,18 +61,11 @@ const mapDispatchToProps = dispatch => {
         //triggerChange : (event, value) => selectRole
         //selectRole : selectRole
 
-        triggerChange: function(event, value, buildDropdown, persons, props) {
+        triggerChange: function(/*event,*/ value, /*buildDropdown,persons,*/  props) {
             dropdownSelection.filterBy = value;
-            dropdownSelection.filteredByData = buildDropdown;
-            let x = filterPersons(value, persons);
-
-            dropdownSelection.ass = assignPersonsToAss(
-                value,
-                props.ass,
-                x,
-                props.rolesKey
-            );
-            dropdownSelection.x = new Date().getTime();
+            dropdownSelection.persons = props.persons;
+            dropdownSelection.rolesKey = props.rolesKey;
+            //dropdownSelection.filteredByData = buildDropdown;
             return dispatch(dropdownSelection);//{type:"SELECT_ROLE"},
             //return dispatch(selectRole);
         }
@@ -125,10 +109,10 @@ export const DropdownRoles = connectedDropdownSelect(
                     onChange={event =>
                         this.props.triggerChange(
                         //this.send(
-                            event,
+                            /*event,*/
                             event.target.value,
-                            this.props.buildDropdown,
-                            this.props.persons,
+                            //this.props.buildDropdown,
+                            /*this.props.persons,*/
                             this.props
                         )
                     }
