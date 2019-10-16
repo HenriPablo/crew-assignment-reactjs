@@ -30,7 +30,8 @@ var filterPersons = (type, persons) => {
 
 var assignPersonsToAss = (role, ass, persons, nk) => {
     for (let i = 0; i < ass.length; i++) {
-        if (ass[i].assignmentKey === nk) {
+        if (ass[i].assignmentKey === nk)
+        {
             ass[i].assignedPersons = persons;
             ass[i].assignedRole = role;
         }
@@ -41,19 +42,19 @@ var assignPersonsToAss = (role, ass, persons, nk) => {
 };
 
 function* fetchPeople(action){
-
+    console.log("Incoming ACTION to saga: ", action );
     /** TEMP  - remove in the Laravel proj. when we can actually get persons via the ajax call */
     const json = yield fetch('http://localhost:3000/ajax-people.json?roleId=89' , {headers : {'Content-Type': 'application/json','Accept': 'application/json'}})
         .then( response => response.json());
 
-    let x = filterPersons(action.filterBy, action.persons);
+    let persons = filterPersons(action.filterBy, action.persons);
 
     let json2 = null;
 
     action.ass = assignPersonsToAss(
-        action.value,
+        action.filterBy,
         action.ass,
-        x,
+        persons,
         action.rolesKey
     );
     action.x = new Date().getTime();
@@ -65,7 +66,10 @@ function* fetchPeople(action){
     //const json = yield fetch('http://localhost:3000/ajax-people.json?roleId=89' , {headers : {'Content-Type': 'application/json','Accept': 'application/json'}})
     //    .then( response => response.json());
 
+    console.log("jason2 in SAGA: ", json2 );
+
     yield put( { type:'PEOPLE_RECEIVED', json: json2 });
+    //yield put( { type:'assign', json: json2 });
 }
 
 function* selectPeopleActionWatcher(){

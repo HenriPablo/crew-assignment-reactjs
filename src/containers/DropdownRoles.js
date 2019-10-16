@@ -65,6 +65,7 @@ const mapDispatchToProps = dispatch => {
             dropdownSelection.filterBy = value;
             dropdownSelection.persons = props.persons;
             dropdownSelection.rolesKey = props.rolesKey;
+            dropdownSelection.ass = props.ass;
             //dropdownSelection.filteredByData = buildDropdown;
             return dispatch(dropdownSelection);//{type:"SELECT_ROLE"},
             //return dispatch(selectRole);

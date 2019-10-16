@@ -6,7 +6,7 @@ import messages from "../data/messages";
 import preferences from "../data/preferences"
 
 const counter = (state, action) => {
-    console.log("state: ", state);
+    //console.log("state: ", state);
     console.log("action: ", action);
 
     let getDefaultPerson = function(){
@@ -113,7 +113,8 @@ const counter = (state, action) => {
         case 'PEOPLE_RECEIVED' :
             return {
                 ...state,
-                persons: action.json,
+                persons: action.json.persons,
+                ass: action.json.ass,
                 loading: false
             }
         case "SELECT_PEOPLE":
