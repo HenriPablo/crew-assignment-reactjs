@@ -68,7 +68,8 @@ function* fetchPeople(action){
 
     console.log("jason2 in SAGA: ", json2 );
 
-    yield put( { type:'PEOPLE_RECEIVED', json: json2 });
+    //yield put( { type:'SELECT_ROLE', json: json2 });
+    //yield put( { type:'PEOPLE_RECEIVED', json: json2 });
     //yield put( { type:'assign', json: json2 });
 }
 

@@ -7,7 +7,7 @@ import preferences from "../data/preferences"
 
 const counter = (state, action) => {
     //console.log("state: ", state);
-    console.log("action: ", action);
+    console.log("action in REDUCER: ", action);
 
     let getDefaultPerson = function(){
         //return preferences.alwaysRenderSelf.defaultPerson; //persons.self;
@@ -114,7 +114,7 @@ const counter = (state, action) => {
             return {
                 ...state,
                 persons: action.json.persons,
-                ass: action.json.ass,
+                ass: [action.json.ass, ...state.ass],//action.json.ass,
                 loading: false
             }
         case "SELECT_PEOPLE":
