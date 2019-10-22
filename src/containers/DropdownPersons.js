@@ -65,12 +65,14 @@ export const DropdownPersons = connectedDropdownSelect(
     class extends Component {
         buildDropdownOptions() {
             let y = [];
-
+            console.log( "this.props at top of buildDropdownOptions: ", this.props );
             /** add default person to dropdown by preference value */
             if(
                 /** initoal app load */
-                this.props.preferences.alwaysRenderSelf.value === true && this.props.ass.length === 1
+                this.props.preferences.alwaysRenderSelf.value === true &&
+                this.props.ass.length === 1
                 && this.props.ass[0].assignedPerson !== null
+                //&& (typeof this.props.ass[0].assignedPerson !== "undefined")
 
             )
             {
@@ -82,12 +84,13 @@ export const DropdownPersons = connectedDropdownSelect(
             }
             else
             {
-                //console.log("BEFORE LOOP props: ", this.props );
+                console.log(" in 'ELSE' BEFORE LOOP props: ", this.props );
                 let p = this.props;
                 let a = this.props.ass;
                 for (let i = 0; i < a.length; i++) {
 
                     if( p.preferences.alwaysRenderSelf.value === true && p.personsKey === 0 && a[i].assignmentKey === 0 ){
+                        console.log(" in 2nd 'IF' INSIDE LOOP p: ", p );
                         y.push(
                             <option
                                 key={this.props.ass[i].assignedPerson.id}
@@ -96,12 +99,14 @@ export const DropdownPersons = connectedDropdownSelect(
                             </option>);
                     }
                     else if(
-                        ( typeof this.props.ass[i].assignedPersons !== "undefined" && p.personsKey > 0 && a[i].assignmentKey > 0 )
+                        ( typeof a[i].assignedPersons !== "undefined" && p.personsKey > 0 && a[i].assignmentKey > 0 )
                          ||
-                        ( typeof this.props.ass[i].assignedPersons !== "undefined" && p.personsKey == 0 && a[i].assignmentKey == 0 && p.preferences.alwaysRenderSelf.value === false )
+                        ( typeof a[i].assignedPersons !== "undefined" && p.personsKey === 0 && a[i].assignmentKey === 0 && p.preferences.alwaysRenderSelf.value === false )
                     )
                     {
+                        console.log(" in 2nd 'ELSE if' inside LOOP props: p", p );
                         if( p.personsKey === a[i].assignmentKey){
+                            console.log(" in 3rd 'IF' INSIDE LOOP A: ", a );
                             for( let ii = 0; ii < a[i].assignedPersons.length; ii++ ){
                                 y.push(<option
                                     key={this.props.ass[i].assignedPersons[ii].id}

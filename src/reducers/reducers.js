@@ -79,6 +79,16 @@ const counter = (state, action) => {
     }
 
     switch (action.type) {
+        case "assign":
+            return {
+                ...state,
+                count: state.count + 1,
+                nextKey: state.count + 1,
+                ass: [action.ass, ...state.ass],
+                assigned: state.assigned + 1,
+                showModal: state.showModal
+            };
+
         case 'GET_ROLES' :
             return {
                 ...state,
@@ -92,31 +102,23 @@ const counter = (state, action) => {
                 loading: false
             };
 
-        case "assign":
-            return {
-                ...state,
-                count: state.count + 1,
-                nextKey: state.count + 1,
-                ass: [action.ass, ...state.ass],
-                assigned: state.assigned + 1,
-                showModal: state.showModal
-            };
-
-        case "SELECT_ROLE":
-            return {
-                ...state,
-                ass: action.ass,
-                x: new Date().getTime(),
-                loading:true
-            };
+        // case "SELECT_ROLE":
+        //     return {
+        //         ...state,
+        //         ass: action.ass,
+        //         x: new Date().getTime(),
+        //         loading:true
+        //     };
 
         case 'PEOPLE_RECEIVED' :
             return {
                 ...state,
                 persons: action.json.persons,
-                ass: [action.json.ass, ...state.ass],//action.json.ass,
+                ass: action.json.ass,//action.json.ass, , ...state.ass
+                x: new Date().getTime(),
                 loading: false
             }
+
         case "SELECT_PEOPLE":
             return {
                 ...state,

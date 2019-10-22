@@ -15,7 +15,6 @@ function* actionWatcher(){
 
 
 /** START LOAD PEOPLE */
-
 var filterPersons = (type, persons) => {
     var x =[];
 
@@ -69,13 +68,11 @@ function* fetchPeople(action){
     console.log("jason2 in SAGA: ", json2 );
 
     //yield put( { type:'SELECT_ROLE', json: json2 });
-    //yield put( { type:'PEOPLE_RECEIVED', json: json2 });
+    yield put( { type:'PEOPLE_RECEIVED', json: json2 });
     //yield put( { type:'assign', json: json2 });
 }
 
 function* selectPeopleActionWatcher(){
-
-    //console.log("action in SAGA: ", action );
     yield takeLatest("SELECT_ROLE", fetchPeople );
 }
 /** END LOAD PEOPLE */
