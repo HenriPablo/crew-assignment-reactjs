@@ -18,9 +18,9 @@ const pSelection = {
     type: "personSelection",
     filterBy: "",
     filteredType: "",
-    //filteredPersons: [],
     ass: [],
-    x: 0
+    value: null,
+    props: null
 };
 
 var updatePersonSelection = (ass, persons, nk) => {
@@ -37,6 +37,10 @@ var updatePersonSelection = (ass, persons, nk) => {
 const mapDispatchToProps = dispatch => {
     return {
         triggerChange: function(value, props) {
+            pSelection.value = value;
+            pSelection.props = props;
+
+            /**
             let x = {};
             for (let i = 0; i < props.ass.length; i++) {
                 if (
@@ -46,11 +50,11 @@ const mapDispatchToProps = dispatch => {
                     x = props.ass[i].assignedPersons;
                 }
             }
-            //dropdownSelection.filteredPersons = x;
+
             pSelection.x = new Date().getTime();//pSelection.x + 1;
             pSelection.ass = updatePersonSelection(props.ass, x, props.nextKey - 1);
-            //console.log("pSelection.ass: ", pSelection.ass);
-            //console.log("dropdown selection: ", dropdownSelection);
+             */
+
             return dispatch(pSelection);
         }
     };

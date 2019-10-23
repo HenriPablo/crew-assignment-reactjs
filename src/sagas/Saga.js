@@ -78,6 +78,43 @@ function* selectPeopleActionWatcher(){
 /** END LOAD PEOPLE */
 
 
+/** PERSON SELECTION */
+var updatePersonSelection = (ass, persons, nk) => {
+    for (let i = 0; i < ass.length; i++) {
+        if (ass[i].assignmentKey === nk) {
+            ass[i].assignedPersons = persons;
+        }
+    }
+    //console.log("ass in updatePersonSelection: ", ass);
+    return ass;
+};
+
+function* createPersonAssignment( action ) {
+
+    let action2 = {};
+    let x = {};
+    for (let i = 0; i < action.props.ass.length; i++) {
+        if (
+            action.props.ass[i].assignmentKey === action.props.nextKey - 1 &&
+            action.props.ass[i].assignedPersons !== null
+        ) {
+            x = action.props.ass[i].assignedPersons;
+        }
+    }
+
+    action2.x = new Date().getTime();
+    action2.ass = updatePersonSelection(action.props.ass, x, action.props.nextKey - 1);
+
+
+    console.log( "action in SAGA createPersonAssignment");
+    yield put({ type: 'PERSON_SELECTED', json : action2 });
+}
+
+function* pSelectionActionWatcher(){
+    yield takeLatest("pSelection", createPersonAssignment );
+}
+/** END PERSON SELECTION */
+
 
 export default function* rootSaga(){
     yield all([

@@ -127,6 +127,13 @@ const counter = (state, action) => {
                 loading: true
             };
 
+        case "PERSON_SELECTED":
+            return {
+                ...state,
+                ass: action.json.ass,
+                x:new Date().getTime()
+            }
+
         case "deleteAssignment":
             return {
                 ...state,
