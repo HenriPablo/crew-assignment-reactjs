@@ -1,4 +1,5 @@
 import { put, takeLatest, all } from 'redux-saga/effects';
+import {updatePersonSelection} from '../utils/PeopleUtils';
 
 
 /** LOAD ROLES */
@@ -79,15 +80,15 @@ function* selectPeopleActionWatcher(){
 
 
 /** PERSON SELECTION */
-var updatePersonSelection = (ass, persons, nk) => {
-    for (let i = 0; i < ass.length; i++) {
-        if (ass[i].assignmentKey === nk) {
-            ass[i].assignedPersons = persons;
-        }
-    }
-    //console.log("ass in updatePersonSelection: ", ass);
-    return ass;
-};
+// var updatePersonSelection = (ass, persons, nk) => {
+//     for (let i = 0; i < ass.length; i++) {
+//         if (ass[i].assignmentKey === nk) {
+//             ass[i].assignedPersons = persons;
+//         }
+//     }
+//     //console.log("ass in updatePersonSelection: ", ass);
+//     return ass;
+// };
 
 function* createPersonAssignment( action ) {
 
