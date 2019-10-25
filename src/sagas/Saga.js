@@ -1,5 +1,6 @@
 import { put, takeLatest, all } from 'redux-saga/effects';
 import {updatePersonSelection} from '../utils/PeopleUtils';
+import { filterPersons, assignPersonsToAss } from '../utils/RolesUtils'
 
 
 /** LOAD ROLES */
@@ -14,33 +15,6 @@ function* actionWatcher(){
     yield  takeLatest("GET_ROLES",   fetchRoles );
 }
 
-
-/** START LOAD PEOPLE */
-var filterPersons = (type, persons) => {
-    var x =[];
-
-    for( let i = 0; i < persons.length; i++ ){
-        if( persons[i]["roles"].includes( type ))
-        {
-            x.push( persons[i]);
-        }
-    }
-    return x;
-};
-
-var assignPersonsToAss = (role, ass, persons, nk) => {
-    for (let i = 0; i < ass.length; i++) {
-        if (ass[i].assignmentKey === nk)
-        {
-            ass[i].assignedPersons = persons;
-            ass[i].assignedRole = role;
-        }
-    }
-
-    //console.log("ass in assignPersonsToAss: ", ass);
-    return ass;
-};
-
 function* fetchPeople(action){
     console.log("Incoming ACTION to saga: ", action );
     /** TEMP  - remove in the Laravel proj. when we can actually get persons via the ajax call */
@@ -49,8 +23,6 @@ function* fetchPeople(action){
 
     let persons = filterPersons(action.filterBy, action.persons);
 
-    let json2 = null;
-
     action.ass = assignPersonsToAss(
         action.filterBy,
         action.ass,
@@ -58,7 +30,7 @@ function* fetchPeople(action){
         action.rolesKey
     );
     action.x = new Date().getTime();
-    json2 = action;
+    let json2 = action;
 
     console.log( "action in Saga - fetchPeople method: ", action );
 
@@ -68,9 +40,7 @@ function* fetchPeople(action){
 
     console.log("jason2 in SAGA: ", json2 );
 
-    //yield put( { type:'SELECT_ROLE', json: json2 });
     yield put( { type:'PEOPLE_RECEIVED', json: json2 });
-    //yield put( { type:'assign', json: json2 });
 }
 
 function* selectPeopleActionWatcher(){
@@ -80,16 +50,6 @@ function* selectPeopleActionWatcher(){
 
 
 /** PERSON SELECTION */
-// var updatePersonSelection = (ass, persons, nk) => {
-//     for (let i = 0; i < ass.length; i++) {
-//         if (ass[i].assignmentKey === nk) {
-//             ass[i].assignedPersons = persons;
-//         }
-//     }
-//     //console.log("ass in updatePersonSelection: ", ass);
-//     return ass;
-// };
-
 function* createPersonAssignment( action ) {
 
     let action2 = {};
@@ -105,7 +65,6 @@ function* createPersonAssignment( action ) {
 
     action2.x = new Date().getTime();
     action2.ass = updatePersonSelection(action.props.ass, x, action.props.nextKey - 1);
-
 
     console.log( "action in SAGA createPersonAssignment");
     yield put({ type: 'PERSON_SELECTED', json : action2 });
