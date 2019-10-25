@@ -6,6 +6,5 @@ function updatePersonSelection(ass, persons, nk){
             ass[i].assignedPersons = persons;
         }
     }
-    //console.log("ass in updatePersonSelection: ", ass);
     return ass;
 };

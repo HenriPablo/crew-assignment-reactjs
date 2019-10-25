@@ -13,7 +13,7 @@ import AssignmentsContainer from "./containers/AssignmentsContainer";
 import reducer from "./reducers/reducers";
 import "./css/index.css";
 
-import rootSaga from'./sagas/Saga';
+import rootSaga from './sagas/RootSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 
