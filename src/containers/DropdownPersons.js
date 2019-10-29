@@ -39,22 +39,6 @@ const mapDispatchToProps = dispatch => {
         triggerChange: function(value, props) {
             pSelection.value = value;
             pSelection.props = props;
-
-            /**
-            let x = {};
-            for (let i = 0; i < props.ass.length; i++) {
-                if (
-                    props.ass[i].assignmentKey === props.nextKey - 1 &&
-                    props.ass[i].assignedPersons !== null
-                ) {
-                    x = props.ass[i].assignedPersons;
-                }
-            }
-
-            pSelection.x = new Date().getTime();//pSelection.x + 1;
-            pSelection.ass = updatePersonSelection(props.ass, x, props.nextKey - 1);
-             */
-
             return dispatch(pSelection);
         }
     };
@@ -76,11 +60,13 @@ export const DropdownPersons = connectedDropdownSelect(
                 this.props.preferences.alwaysRenderSelf.value === true &&
                 this.props.ass.length === 1
                 && this.props.ass[0].assignedPerson !== null
-                //&& (typeof this.props.ass[0].assignedPerson !== "undefined")
+                // check if the role selection matches roles of the default person
+                // maybe someone has changed the PIC role to something else
+                && this.props.ass[0].assignedPerson.roles.includes( this.props.ass[0].assignedRole )
 
             )
             {
-                //console.log("1st IF");
+                console.log("1st IF");
                 y.push(<option
                     key={this.props.ass[0].assignedPerson.id}
                     value={this.props.ass[0].assignedPerson.id}
