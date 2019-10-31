@@ -72,6 +72,26 @@ export const DropdownPersons = connectedDropdownSelect(
                     value={this.props.ass[0].assignedPerson.id}
                     >{this.props.ass[0].assignedPerson.first_name} {this.props.ass[0].assignedPerson.last_name}</option>);
             }
+            /** Changing default role on a default assignment */
+            else if(
+                this.props.preferences.alwaysRenderSelf.value === true &&
+                this.props.ass.length === 1 &&
+                this.props.preferences.alwaysRenderSelf.defaultRole !== this.props.ass[0].assignedRole
+            ){
+                console.log("1st ESLE IF")
+                let p1 = this.props;
+                let a1 = this.props.ass;
+                for( let i1 = 0; i1 < a1.length; i1++ )
+                {
+                    for( let ii = 0; ii < a1[i1].assignedPersons.length; ii++ ){
+                        y.push(<option
+                            key={this.props.ass[i1].assignedPersons[ii].id}
+                            value={this.props.ass[i1].assignedPersons[ii].id}
+                        >{this.props.ass[i1].assignedPersons[ii].first_name} {this.props.ass[i1].assignedPersons[ii].last_name}</option>);
+                    }
+                }
+
+            }
             else
             {
                 console.log(" in 'ELSE' BEFORE LOOP props: ", this.props );
