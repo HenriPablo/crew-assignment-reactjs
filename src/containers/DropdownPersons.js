@@ -99,7 +99,12 @@ export const DropdownPersons = connectedDropdownSelect(
                 let a = this.props.ass;
                 for (let i = 0; i < a.length; i++) {
 
-                    if( p.preferences.alwaysRenderSelf.value === true && p.personsKey === 0 && a[i].assignmentKey === 0 ){
+                    if( p.preferences.alwaysRenderSelf.value === true &&
+                        p.personsKey === 0
+                        && a[i].assignmentKey === 0
+                        && this.props.ass[i].assignedPerson.roles.includes(  a[i].assignedRole )
+                    )
+                    {
                         console.log(" in 2nd 'IF' INSIDE LOOP p: ", p );
                         y.push(
                             <option
@@ -108,10 +113,19 @@ export const DropdownPersons = connectedDropdownSelect(
                                 {this.props.ass[i].assignedPerson.first_name} {this.props.ass[i].assignedPerson.last_name}
                             </option>);
                     }
-                    else if(
-                        ( typeof a[i].assignedPersons !== "undefined" && p.personsKey > 0 && a[i].assignmentKey > 0 )
+
+                    else if
+                    (
+                        ( typeof a[i].assignedPersons !== "undefined"
+                            && p.personsKey > 0
+                            && a[i].assignmentKey > 0
+                        )
                          ||
-                        ( typeof a[i].assignedPersons !== "undefined" && p.personsKey === 0 && a[i].assignmentKey === 0 && p.preferences.alwaysRenderSelf.value === false )
+                        ( typeof a[i].assignedPersons !== "undefined"
+                            && p.personsKey === 0
+                            && a[i].assignmentKey === 0
+                            && p.preferences.alwaysRenderSelf.value === false
+                        )
                     )
                     {
                         console.log(" in 2nd 'ELSE if' inside LOOP props: p", p );
@@ -123,6 +137,24 @@ export const DropdownPersons = connectedDropdownSelect(
                                     value={this.props.ass[i].assignedPersons[ii].id}
                                 >{this.props.ass[i].assignedPersons[ii].first_name} {this.props.ass[i].assignedPersons[ii].last_name}</option>);
                             }
+                        }
+                    }
+
+                    else if
+                    (
+                        typeof a[i].assignedPersons !== "undefined"
+                        && p.personsKey === 0
+                        && a[i].assignmentKey === 0
+                        && p.preferences.alwaysRenderSelf.value === true
+                        && !a[i].assignedPerson.roles.includes( a[i].assignedRole )
+                    )
+                    {
+                        console.log(" in LAST  'ELSE-IF' INSIDE LOOP A: ", a );
+                        for( let ii = 0; ii < a[i].assignedPersons.length; ii++ ){
+                            y.push(<option
+                                key={this.props.ass[i].assignedPersons[ii].id}
+                                value={this.props.ass[i].assignedPersons[ii].id}
+                            >{this.props.ass[i].assignedPersons[ii].first_name} {this.props.ass[i].assignedPersons[ii].last_name}</option>);
                         }
                     }
                 }// end for loop
