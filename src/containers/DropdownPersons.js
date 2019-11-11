@@ -23,15 +23,6 @@ const pSelection = {
     props: null
 };
 
-var updatePersonSelection = (ass, persons, nk) => {
-    for (let i = 0; i < ass.length; i++) {
-        if (ass[i].assignmentKey === nk) {
-            ass[i].assignedPersons = persons;
-        }
-    }
-    //console.log("ass in updatePersonSelection: ", ass);
-    return ass;
-};
 
 // Map Redux actions to component props
 const mapDispatchToProps = dispatch => {
@@ -52,7 +43,15 @@ const connectedDropdownSelect = connect(
 export const DropdownPersons = connectedDropdownSelect(
     class extends Component {
         buildDropdownOptions() {
+            let props = this.props;
+            let assignments = this.props.ass;
+
             let y = [];
+
+            let makeOption = (key, value, label) =>{
+                return <option key={key} value={value}>{label}</option>
+            }
+
             console.log( "this.props at top of buildDropdownOptions: ", this.props );
             /** add default person to dropdown by preference value */
             if(
@@ -67,10 +66,15 @@ export const DropdownPersons = connectedDropdownSelect(
             )
             {
                 console.log("1st IF");
-                y.push(<option
-                    key={this.props.ass[0].assignedPerson.id}
-                    value={this.props.ass[0].assignedPerson.id}
-                    >{this.props.ass[0].assignedPerson.first_name} {this.props.ass[0].assignedPerson.last_name}</option>);
+                y.push( makeOption(this.props.ass[0].assignedPerson.id, this.props.ass[0].assignedPerson.id, (this.props.ass[0].assignedPerson.first_name + " " + this.props.ass[0].assignedPerson.last_name) )
+
+                    // <option
+                    // key={this.props.ass[0].assignedPerson.id}
+                    // value={this.props.ass[0].assignedPerson.id}
+                    // >{this.props.ass[0].assignedPerson.first_name} {this.props.ass[0].assignedPerson.last_name}
+                    // </option>
+
+                );
             }
             /** Changing default role on a default assignment */
             else if(
@@ -95,17 +99,17 @@ export const DropdownPersons = connectedDropdownSelect(
             else
             {
                 console.log(" in 'ELSE' BEFORE LOOP props: ", this.props );
-                let p = this.props;
-                let a = this.props.ass;
-                for (let i = 0; i < a.length; i++) {
+                //let p = this.props;
+                //let a = this.props.ass;
+                for (let i = 0; i < assignments.length; i++) {
 
-                    if( p.preferences.alwaysRenderSelf.value === true &&
-                        p.personsKey === 0
-                        && a[i].assignmentKey === 0
-                        && this.props.ass[i].assignedPerson.roles.includes(  a[i].assignedRole )
+                    if( props.preferences.alwaysRenderSelf.value === true &&
+                        props.personsKey === 0
+                        && assignments[i].assignmentKey === 0
+                        && assignments[i].assignedPerson.roles.includes(  assignments[i].assignedRole )
                     )
                     {
-                        console.log(" in 2nd 'IF' INSIDE LOOP p: ", p );
+                        console.log(" in 2nd 'IF' INSIDE LOOP p: ", props );
                         y.push(
                             <option
                                 key={this.props.ass[i].assignedPerson.id}
@@ -116,22 +120,22 @@ export const DropdownPersons = connectedDropdownSelect(
 
                     else if
                     (
-                        ( typeof a[i].assignedPersons !== "undefined"
-                            && p.personsKey > 0
-                            && a[i].assignmentKey > 0
+                        ( typeof assignments[i].assignedPersons !== "undefined"
+                            && props.personsKey > 0
+                            && assignments[i].assignmentKey > 0
                         )
                          ||
-                        ( typeof a[i].assignedPersons !== "undefined"
-                            && p.personsKey === 0
-                            && a[i].assignmentKey === 0
-                            && p.preferences.alwaysRenderSelf.value === false
+                        ( typeof assignments[i].assignedPersons !== "undefined"
+                            && props.personsKey === 0
+                            && assignments[i].assignmentKey === 0
+                            && props.preferences.alwaysRenderSelf.value === false
                         )
                     )
                     {
-                        console.log(" in 2nd 'ELSE if' inside LOOP props: p", p );
-                        if( p.personsKey === a[i].assignmentKey){
-                            console.log(" in 3rd 'IF' INSIDE LOOP A: ", a );
-                            for( let ii = 0; ii < a[i].assignedPersons.length; ii++ ){
+                        console.log(" in 2nd 'ELSE if' inside LOOP props: p", props );
+                        if( props.personsKey === assignments[i].assignmentKey){
+                            console.log(" in 3rd 'IF' INSIDE LOOP A: ", assignments );
+                            for( let ii = 0; ii < assignments[i].assignedPersons.length; ii++ ){
                                 y.push(<option
                                     key={this.props.ass[i].assignedPersons[ii].id}
                                     value={this.props.ass[i].assignedPersons[ii].id}
@@ -142,15 +146,15 @@ export const DropdownPersons = connectedDropdownSelect(
 
                     else if
                     (
-                        typeof a[i].assignedPersons !== "undefined"
-                        && p.personsKey === 0
-                        && a[i].assignmentKey === 0
-                        && p.preferences.alwaysRenderSelf.value === true
-                        && !a[i].assignedPerson.roles.includes( a[i].assignedRole )
+                        typeof assignments[i].assignedPersons !== "undefined"
+                        && props.personsKey === 0
+                        && assignments[i].assignmentKey === 0
+                        && props.preferences.alwaysRenderSelf.value === true
+                        && !assignments[i].assignedPerson.roles.includes( assignments[i].assignedRole )
                     )
                     {
-                        console.log(" in LAST  'ELSE-IF' INSIDE LOOP A: ", a );
-                        for( let ii = 0; ii < a[i].assignedPersons.length; ii++ ){
+                        console.log(" in LAST  'ELSE-IF' INSIDE LOOP A: ", assignments );
+                        for( let ii = 0; ii < assignments[i].assignedPersons.length; ii++ ){
                             y.push(<option
                                 key={this.props.ass[i].assignedPersons[ii].id}
                                 value={this.props.ass[i].assignedPersons[ii].id}
