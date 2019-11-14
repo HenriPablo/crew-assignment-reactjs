@@ -117,7 +117,7 @@ const counter = (state, action) => {
                 ass: action.json.ass,//action.json.ass, , ...state.ass
                 x: new Date().getTime(),
                 loading: false
-            }
+            };
 
         case "SELECT_PEOPLE":
             return {
@@ -132,12 +132,13 @@ const counter = (state, action) => {
                 ...state,
                 ass: action.json.ass,
                 x:new Date().getTime()
-            }
+            };
 
-        case "deleteAssignment":
+        //case "deleteAssignment":
+        case "ASSIGNMENT_DELETED":
             return {
                 ...state,
-                ass: action.newAss,
+                ass: action.json.newAss, //action.newAss,
                 assigned: state.assigned - 1
             };
 

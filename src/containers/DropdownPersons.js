@@ -35,6 +35,7 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
+
 const connectedDropdownSelect = connect(
     mapStateToProps,
     mapDispatchToProps
@@ -66,12 +67,10 @@ export const DropdownPersons = connectedDropdownSelect(
             )
             {
                 console.log("1st IF");
-                y.push(
-                    makeOption(
-                        assignments[0].assignedPerson.id,
-                        (assignments[0].assignedPerson.first_name + " " + assignments[0].assignedPerson.last_name)
-                    )
-                );
+                y.push(makeOption(
+                    assignments[0].assignedPerson.id,
+                    (assignments[0].assignedPerson.first_name + " " + assignments[0].assignedPerson.last_name)
+                 ))
             }
             /** Changing default role on a default assignment */
             else if(
