@@ -49,8 +49,31 @@ export const DropdownPersons = connectedDropdownSelect(
 
             let y = [];
 
-            let makeOption = (idValue, label) =>{
-                return <option key={idValue} value={idValue}>{label}</option>
+            /**
+             * @param assignments: list of assignments
+             * @param cnt: default counter value
+             * @param cnt2: optional counter value
+             * @returns {*} option dropdown element
+             */
+            let makeOptionX = ( assignments, cnt =-1, cnt2 = -1) => {
+
+                let k = null;
+                let v = null;
+                let l = null;
+
+                if( cnt2 > -1 ){
+                    k = assignments[cnt].assignedPersons[cnt2].id;
+                    v = assignments[cnt].assignedPersons[cnt2].id;
+                    l = assignments[cnt].assignedPersons[cnt2].first_name + " " + assignments[cnt].assignedPersons[cnt2].last_name;
+                }
+                else
+                    {
+                        k = assignments[cnt].assignedPerson.id;
+                        v = assignments[cnt].assignedPerson.id;
+                        l = assignments[cnt].assignedPerson.first_name + " " + assignments[(cnt2 > -1) ? cnt2 : cnt ].assignedPerson.last_name;
+                    }
+
+                return <option key={k} value={v}>{l}</option>
             }
 
             console.log( "this.props at top of buildDropdownOptions: ", this.props );
@@ -67,10 +90,7 @@ export const DropdownPersons = connectedDropdownSelect(
             )
             {
                 console.log("1st IF");
-                y.push(makeOption(
-                    assignments[0].assignedPerson.id,
-                    (assignments[0].assignedPerson.first_name + " " + assignments[0].assignedPerson.last_name)
-                 ))
+                y.push( makeOptionX( assignments, 0 ))
             }
             /** Changing default role on a default assignment */
             else if(
@@ -83,12 +103,7 @@ export const DropdownPersons = connectedDropdownSelect(
                 for( let i1 = 0; i1 < assignments.length; i1++ )
                 {
                     for( let ii = 0; ii < assignments[i1].assignedPersons.length; ii++ ){
-                        y.push(
-                            makeOption(
-                                assignments[i1].assignedPersons[ii].id,
-                                (assignments[i1].assignedPersons[ii].first_name + " " + assignments[i1].assignedPersons[ii].last_name)
-                            )
-                        )
+                        y.push(makeOptionX(assignments, i1, ii))
                     }
                 }
 
@@ -105,12 +120,7 @@ export const DropdownPersons = connectedDropdownSelect(
                     )
                     {
                         console.log(" in 2nd 'IF' INSIDE LOOP p: ", props );
-                        y.push(
-                            makeOption(
-                                assignments[i].assignedPerson.id,
-                                (assignments[i].assignedPerson.first_name + " " + assignments[i].assignedPerson.last_name)
-                            )
-                        )
+                        y.push(makeOptionX( assignments, i ))
                     }
 
                     else if
@@ -131,12 +141,7 @@ export const DropdownPersons = connectedDropdownSelect(
                         if( props.personsKey === assignments[i].assignmentKey){
                             console.log(" in 3rd 'IF' INSIDE LOOP A: ", assignments );
                             for( let ii = 0; ii < assignments[i].assignedPersons.length; ii++ ){
-                                y.push(
-                                    makeOption(
-                                        assignments[i].assignedPersons[ii].id,
-                                        (assignments[i].assignedPersons[ii].first_name + " " + assignments[i].assignedPersons[ii].last_name)
-                                    )
-                                )
+                                y.push(makeOptionX( assignments, i, ii ))
                             }
                         }
                     }
@@ -152,12 +157,7 @@ export const DropdownPersons = connectedDropdownSelect(
                     {
                         console.log(" in LAST  'ELSE-IF' INSIDE LOOP A: ", assignments );
                         for( let ii = 0; ii < assignments[i].assignedPersons.length; ii++ ){
-                            y.push(
-                                makeOption(
-                                    assignments[i].assignedPersons[ii].id,
-                                    (assignments[i].assignedPersons[ii].first_name + " " + assignments[i].assignedPersons[ii].last_name)
-                                )
-                            )
+                            y.push(makeOptionX( assignments, i, ii ))
                         }
                     }
                 }// end for loop
