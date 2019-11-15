@@ -76,7 +76,8 @@ export const DropdownPersons = connectedDropdownSelect(
             else if(
                 this.props.preferences.alwaysRenderSelf.value === true &&
                 this.props.ass.length === 1 &&
-                this.props.preferences.alwaysRenderSelf.defaultRole !== this.props.ass[0].assignedRole
+                this.props.preferences.alwaysRenderSelf.defaultRole !== this.props.ass[0].assignedRole &&
+                this.props.ass[0].assignedRole !== null
             ){
                 console.log("1st ESLE IF")
                 for( let i1 = 0; i1 < assignments.length; i1++ )

@@ -17,8 +17,9 @@ const deleteAss = (deleteKey, ass) => {
 };
 
 // Action
-//type: "deleteAssignment",
+
 const deleteAssignment = {
+    //type: "deleteAssignment",
     type: "DELETE_ASSIGNMENT",
     payload: "bob",
     ass: null,

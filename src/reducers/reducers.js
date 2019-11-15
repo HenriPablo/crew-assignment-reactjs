@@ -138,7 +138,8 @@ const counter = (state, action) => {
         case "ASSIGNMENT_DELETED":
             return {
                 ...state,
-                ass: action.json.newAss, //action.newAss,
+                ass: action.json.newAss,
+                //ass:action.newAss,
                 assigned: state.assigned - 1
             };
 
