@@ -102,19 +102,11 @@ const counter = (state, action) => {
                 loading: false
             };
 
-        // case "SELECT_ROLE":
-        //     return {
-        //         ...state,
-        //         ass: action.ass,
-        //         x: new Date().getTime(),
-        //         loading:true
-        //     };
-
         case 'PEOPLE_RECEIVED' :
             return {
                 ...state,
                 persons: action.json.persons,
-                ass: action.json.ass,//action.json.ass, , ...state.ass
+                ass: action.json.ass,
                 x: new Date().getTime(),
                 loading: false
             };
@@ -134,12 +126,10 @@ const counter = (state, action) => {
                 x:new Date().getTime()
             };
 
-        //case "deleteAssignment":
         case "ASSIGNMENT_DELETED":
             return {
                 ...state,
                 ass: action.json.newAss,
-                //ass:action.newAss,
                 assigned: state.assigned - 1
             };
 

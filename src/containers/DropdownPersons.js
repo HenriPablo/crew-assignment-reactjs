@@ -76,7 +76,7 @@ export const DropdownPersons = connectedDropdownSelect(
                 return <option key={k} value={v}>{l}</option>
             }
 
-            console.log( "this.props at top of buildDropdownOptions: ", this.props );
+            //console.log( "this.props at top of buildDropdownOptions: ", this.props );
             /** add default person to dropdown by preference value */
             if(
                 /** initial app load */
@@ -99,7 +99,7 @@ export const DropdownPersons = connectedDropdownSelect(
                 this.props.preferences.alwaysRenderSelf.defaultRole !== this.props.ass[0].assignedRole &&
                 this.props.ass[0].assignedRole !== null
             ){
-                console.log("1st ESLE IF")
+                //console.log("1st ESLE IF")
                 for( let i1 = 0; i1 < assignments.length; i1++ )
                 {
                     for( let ii = 0; ii < assignments[i1].assignedPersons.length; ii++ ){
@@ -119,7 +119,7 @@ export const DropdownPersons = connectedDropdownSelect(
                         && assignments[i].assignedPerson.roles.includes(  assignments[i].assignedRole )
                     )
                     {
-                        console.log(" in 2nd 'IF' INSIDE LOOP p: ", props );
+                        //console.log(" in 2nd 'IF' INSIDE LOOP p: ", props );
                         y.push(makeOptionX( assignments, i ))
                     }
 
@@ -137,9 +137,9 @@ export const DropdownPersons = connectedDropdownSelect(
                         )
                     )
                     {
-                        console.log(" in 2nd 'ELSE if' inside LOOP props: p", props );
+                        //console.log(" in 2nd 'ELSE if' inside LOOP props: p", props );
                         if( props.personsKey === assignments[i].assignmentKey){
-                            console.log(" in 3rd 'IF' INSIDE LOOP A: ", assignments );
+                            //console.log(" in 3rd 'IF' INSIDE LOOP A: ", assignments );
                             for( let ii = 0; ii < assignments[i].assignedPersons.length; ii++ ){
                                 y.push(makeOptionX( assignments, i, ii ))
                             }
@@ -155,7 +155,7 @@ export const DropdownPersons = connectedDropdownSelect(
                         && !assignments[i].assignedPerson.roles.includes( assignments[i].assignedRole )
                     )
                     {
-                        console.log(" in LAST  'ELSE-IF' INSIDE LOOP A: ", assignments );
+                        //console.log(" in LAST  'ELSE-IF' INSIDE LOOP A: ", assignments );
                         for( let ii = 0; ii < assignments[i].assignedPersons.length; ii++ ){
                             y.push(makeOptionX( assignments, i, ii ))
                         }

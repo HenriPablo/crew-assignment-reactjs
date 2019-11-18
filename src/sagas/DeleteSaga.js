@@ -11,7 +11,7 @@ const deleteAss = (deleteKey, ass) => {
 
 function* deleteAssignment( action ) {
 
-    console.log("deleteAssignment() called in DELETE SAGA")
+    //console.log("deleteAssignment() called in DELETE SAGA")
     action.newAss = deleteAss(action.deleteKey, action.ass)
 
     const json = action;
@@ -20,6 +20,6 @@ function* deleteAssignment( action ) {
 }
 
 function* deleteAssignmentWatcher(){
-    console.log("deleteAssignmentWatcher() called in DELETE SAGA")
+    //console.log("deleteAssignmentWatcher() called in DELETE SAGA")
     yield takeLatest("DELETE_ASSIGNMENT", deleteAssignment);
 }

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { selectRole } from "../actions";
 
 const mapStateToProps = state => {
     return {
@@ -26,25 +25,14 @@ const dropdownSelection = {
 };
 
 // Map Redux actions to component props
-//const mapDispatchToProps = dispatch => {
 const mapDispatchToProps = dispatch => {
-    //selectRole : selectRole(props)
-    //return
-    //dispatch(selectRole)
     return {
-
-        //selectRole: selectRole(),
-        //triggerChange : (event, value) => selectRole
-        //selectRole : selectRole
-
-        triggerChange: function(/*event,*/ value, /*buildDropdown,persons,*/  props) {
+        triggerChange: function( value, props) {
             dropdownSelection.filterBy = value;
             dropdownSelection.persons = props.persons;
             dropdownSelection.rolesKey = props.rolesKey;
             dropdownSelection.ass = props.ass;
-            //dropdownSelection.filteredByData = buildDropdown;
-            return dispatch(dropdownSelection);//{type:"SELECT_ROLE"},
-            //return dispatch(selectRole);
+            return dispatch(dropdownSelection);
         }
     };
 };
@@ -85,11 +73,7 @@ export const DropdownRoles = connectedDropdownSelect(
                     defaultValue={ this.selectedRole() }
                     onChange={event =>
                         this.props.triggerChange(
-                        //this.send(
-                            /*event,*/
                             event.target.value,
-                            //this.props.buildDropdown,
-                            /*this.props.persons,*/
                             this.props
                         )
                     }
