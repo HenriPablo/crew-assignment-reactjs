@@ -16,7 +16,9 @@ const mapStateToProps = state => {
 
 // Action
 const addAssignment = {
-    type: "assign",
+    //type: "assign",
+    //type: "ASSIGN",
+    type: "START_ASSIGN",
     payload: "ang",
     ass: [],
     nextKey: 0,
