@@ -31,6 +31,7 @@ const counter = (state, action) => {
         let defaultAss = [];
         if( typeof x != "undefined" && x.alwaysRenderSelf.value === true){
             //console.log('trying to create a deafult assignment')
+            console.log("getDefaultPerson(x): ", getDefaultPerson(x) );
             defaultAss = [{
                 "assignedPerson": getDefaultPerson(x),
                 "assignedPersons": getDefaultPerson(x),// { [preferences.alwaysRenderSelf.defaultPerson] : persons.self },
@@ -38,7 +39,7 @@ const counter = (state, action) => {
                 "assignmentKey": 0
             }]
         }
-        console.log("defaultAss in defaultAssigment() in reducer");
+        console.log("defaultAss in DEFAULTASSIGMENT() in reducer");
         console.log(defaultAss)
         return defaultAss;
 
@@ -73,7 +74,7 @@ const counter = (state, action) => {
             preferences: {},
             selectionType: "",
             count: getCount(),//0,
-            ass: defaultAssigment(),
+            ass:[],// defaultAssigment(),
             nextKey: getNextKey(),// 0,
             filterBy: "",
             /** marker updated in Roles and Persons dropdowns to force re-render of those elements  */
