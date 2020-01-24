@@ -20,12 +20,6 @@ const counter = (state, action) => {
         }
     }
 
-    let getDefaultRole = function(x){
-        console.log("x in getDefaultRole()")
-        console.log(x);
-        //return x.alwaysRenderSelf.defaultRole;
-        return x.alwaysRenderSelf.defaultRole;
-    }
 
     let defaultAssigment = function(x){
         let defaultAss = [];
@@ -35,7 +29,7 @@ const counter = (state, action) => {
             defaultAss = [{
                 "assignedPerson": getDefaultPerson(x),
                 "assignedPersons": getDefaultPerson(x),// { [preferences.alwaysRenderSelf.defaultPerson] : persons.self },
-                "assignedRole": getDefaultRole(x),
+                "assignedRole": x.alwaysRenderSelf.defaultRole, //getDefaultRole(x),
                 "assignmentKey": 0
             }]
         }
@@ -85,6 +79,20 @@ const counter = (state, action) => {
         }
     }
 
+    let getA = function (a1, a2, a3 ) {
+        let a = [];
+        if(typeof a1 != "undefined" && a1 != null ){ //&& a1.size > 0
+            a.push( a1);
+        }
+        if(typeof a2 != "undefined" &&  a2 !=null ){
+            a.push( a2);
+        }
+        if(typeof a3 != "undefined" &&  a3 != null && a3.size > 0){
+            a.push( a3 );
+        }
+        return  a;
+    }
+
     switch (action.type) {
 
         //case "START_ASSIGN":
@@ -93,16 +101,16 @@ const counter = (state, action) => {
 
         /** THIS ONE NEEDS TO GET PREFERENCES AND ROLES */
         case "ASSIGN":
-            console.log("jsonPreferences in reducer - ASSIGN")
-            console.log(action.jsonPreferences)
-            getDefaultRole(action.jsonPreferences);
+            console.log("jsonPreferences in reducer - ASSIGN", action.jsonPreferences)
+
             let z =
              {
                 ...state,
                 preferences: action.jsonPreferences,
                 count: state.count + 1,
                 nextKey: state.count + 1,
-                ass: [action.ass, ...state.ass, defaultAssigment(action.jsonPreferences)],
+                ass: getA(action.ass, ...state.ass, defaultAssigment(action.jsonPreferences) ),
+                 //ass: [action.ass, ...state.ass, defaultAssigment(action.jsonPreferences)],
                 assigned: state.assigned + 1,
                 showModal: state.showModal
             }
