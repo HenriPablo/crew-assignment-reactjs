@@ -9,35 +9,35 @@ const counter = (state, action) => {
     //console.log("state: ", state);
     console.log("action in REDUCER: ", action);
 
-    let getDefaultPerson = function(){
-        //return preferences.alwaysRenderSelf.defaultPerson; //persons.self;
-        for( let i = 0; i < persons.length; i++ ){
-            console.log( "reducer persons[i]: ", persons[i]);
-            if( persons[i].self === "true" ){
-                console.log( "reducer persons[i]: ", persons[i]);
-                return persons[i];
-            }
-        }
-    }
+    // let getDefaultPerson = function(){
+    //     //return preferences.alwaysRenderSelf.defaultPerson; //persons.self;
+    //     for( let i = 0; i < persons.length; i++ ){
+    //         console.log( "reducer persons[i]: ", persons[i]);
+    //         if( persons[i].self === "true" ){
+    //             console.log( "reducer persons[i]: ", persons[i]);
+    //             return persons[i];
+    //         }
+    //     }
+    // }
 
 
-    let defaultAssigment = function(x){
-        let defaultAss = [];
-        if( typeof x != "undefined" && x.alwaysRenderSelf.value === true){
-            //console.log('trying to create a deafult assignment')
-            console.log("getDefaultPerson(x): ", getDefaultPerson(x) );
-            defaultAss = [{
-                "assignedPerson": getDefaultPerson(x),
-                "assignedPersons": getDefaultPerson(x),// { [preferences.alwaysRenderSelf.defaultPerson] : persons.self },
-                "assignedRole": x.alwaysRenderSelf.defaultRole, //getDefaultRole(x),
-                "assignmentKey": 0
-            }]
-        }
-        console.log("defaultAss in DEFAULTASSIGMENT() in reducer");
-        console.log(defaultAss)
-        return defaultAss;
-
-    }
+    // let defaultAssigment = function(x){
+    //     let defaultAss = [];
+    //     if( typeof x != "undefined" && x.alwaysRenderSelf.value === true){
+    //         //console.log('trying to create a deafult assignment')
+    //         console.log("getDefaultPerson(x): ", getDefaultPerson(x) );
+    //         defaultAss = [{
+    //             "assignedPerson": getDefaultPerson(x),
+    //             "assignedPersons": getDefaultPerson(x),// { [preferences.alwaysRenderSelf.defaultPerson] : persons.self },
+    //             "assignedRole": x.alwaysRenderSelf.defaultRole, //getDefaultRole(x),
+    //             "assignmentKey": 0
+    //         }]
+    //     }
+    //     console.log("defaultAss in DEFAULTASSIGMENT() in reducer");
+    //     console.log(defaultAss)
+    //     return defaultAss;
+    //
+    // }
 
     let getAssigned = function(x){
         if( typeof x != "undefined" && x.alwaysRenderSelf.value === true){
@@ -79,19 +79,19 @@ const counter = (state, action) => {
         }
     }
 
-    let getA = function (a1, a2, a3 ) {
-        let a = [];
-        if(typeof a1 != "undefined" && a1 != null ){ //&& a1.size > 0
-            a.push( a1);
-        }
-        if(typeof a2 != "undefined" &&  a2 !=null ){
-            a.push( a2);
-        }
-        if(typeof a3 != "undefined" &&  a3 != null && a3.size > 0){
-            a.push( a3 );
-        }
-        return  a;
-    }
+    // let getA = function (a1, a2, a3 ) {
+    //     let a = [];
+    //     if(typeof a1 != "undefined" && a1 != null ){ //&& a1.size > 0
+    //         a.push( a1);
+    //     }
+    //     if(typeof a2 != "undefined" &&  a2 !=null ){
+    //         a.push( a2);
+    //     }
+    //     if(typeof a3 != "undefined" &&  a3 != null && a3.size > 0){
+    //         a.push( a3 );
+    //     }
+    //     return  a;
+    // }
 
     switch (action.type) {
 
@@ -109,9 +109,9 @@ const counter = (state, action) => {
                 preferences: action.jsonPreferences,
                 count: state.count + 1,
                 nextKey: state.count + 1,
-                ass: getA(action.ass, ...state.ass, defaultAssigment(action.jsonPreferences) ),
-                 //ass: [action.ass, ...state.ass, defaultAssigment(action.jsonPreferences)],
-                assigned: state.assigned + 1,
+                //ass: getA(action.ass, ...state.ass, defaultAssigment(action.jsonPreferences) ),
+                 ass: [/*action.ass,*/ ...state.ass, action.defaultAss],
+                 assigned: state.assigned + 1,
                 showModal: state.showModal
             }
             console.log("z in ASSIGN action:");

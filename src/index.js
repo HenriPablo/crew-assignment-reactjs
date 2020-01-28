@@ -22,10 +22,10 @@ const enhancers = composeWithDevTools(
 );
 
 const store = createStore( reducer, enhancers );
+store.dispatch({"type":"DO_AJAX_INIT"});
+
 const rootElement = document.getElementById("root");
-
 sagaMiddleware.run(rootSaga);
-
 /**
  * some guides:
  *  REDUX:
