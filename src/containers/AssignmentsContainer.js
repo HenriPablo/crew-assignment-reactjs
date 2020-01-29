@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Assignment from "./Assignment";
-import { getRoles } from "../actions";
+import {getRoles, START_AJAX_INIT} from "../actions";
 
 const mapStateToProps = state => {
     //console.log("state in mapStateToProps in Ass container: ", state);
@@ -15,8 +15,13 @@ const mapStateToProps = state => {
 };
 
 // Map Redux actions to component props
-const mapDispatchToProps = {
-    getRoles: getRoles,
+const mapDispatchToProps = dispatch => {
+    //return{
+       // {
+    //, {getRoles: getRoles}
+            return dispatch(START_AJAX_INIT);
+       // }
+    //}
 };
 
 const connectedContainer = connect(
@@ -27,7 +32,7 @@ const connectedContainer = connect(
 export const AssignmentsContainer = connectedContainer(
     class extends Component {
         buildAssignments = () => {
-            console.log("this.props.roles === null: ", this.props.roles === null);
+            //console.log("this.props.roles === null: ", this.props.roles === null);
 
             if( this.props.roles === null ){
                 this.props.getRoles();
@@ -61,4 +66,6 @@ export const AssignmentsContainer = connectedContainer(
         }
     }
 );
+
+
 export default AssignmentsContainer;

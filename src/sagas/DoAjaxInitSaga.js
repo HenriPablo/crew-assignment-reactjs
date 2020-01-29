@@ -1,15 +1,14 @@
-import {put, takeLatest} from "@redux-saga/core/effects";
-import persons from "../data/people2";
-export {assignActionWatcher}
+import {put, takeLatest, takeEvery} from "@redux-saga/core/effects";
+//export {triggerInitAjaxDataActionWatcher}
 
-function* fetchAssign( action ) {
+export function* workFetchInitAjaxData( action ) {
     console.log("action at TOP OF ASSIGN SAGA: ", action );
     let getDefaultPerson = function(persons){
         //return preferences.alwaysRenderSelf.defaultPerson; //persons.self;
         for( let i = 0; i < persons.length; i++ ){
             console.log( "reducer persons[i]: ", persons[i]);
             if( persons[i].self === "true" ){
-                console.log( "reducer persons[i]: ", persons[i]);
+                console.log( "AJAX_INIT_DONE reducer persons[i]: ", persons[i]);
                 return persons[i];
             }
         }
@@ -19,7 +18,7 @@ function* fetchAssign( action ) {
         let defaultAss = [];
         if( typeof prefs != "undefined" && prefs.alwaysRenderSelf.value === true){
             //console.log('trying to create a deafult assignment')
-            console.log("getDefaultPerson(x): ", getDefaultPerson(people) );
+            console.log("AJAX_INIT_DONE getDefaultPerson(x): ", getDefaultPerson(people) );
             defaultAss = [{
                 "assignedPerson": getDefaultPerson(people),
                 "assignedPersons": getDefaultPerson(prefs),// { [preferences.alwaysRenderSelf.defaultPerson] : persons.self },
@@ -27,7 +26,7 @@ function* fetchAssign( action ) {
                 "assignmentKey": 0
             }]
         }
-        console.log("defaultAss in DEFAULTASSIGMENT() in reducer");
+        console.log("defaultAss in AJAX_INIT_DONE in saga");
         console.log(defaultAss)
         return defaultAss;
 
@@ -38,7 +37,7 @@ function* fetchAssign( action ) {
 
     const jsonPreferences = {
         "alwaysRenderSelf" : {
-            "value" : true,
+            "value" : false,
             "tip" : "Render dropdown selects for Self as pilot and specified role, for example PIC, Student, etc.",
             "defaultRole" : "59",
             "defaultPerson" : "self"
@@ -56,16 +55,22 @@ function* fetchAssign( action ) {
         const peopleJson = yield fetch('http://localhost:3000/ajax-people.json?roleId=89' , {headers : {'Content-Type': 'application/json','Accept': 'application/json'}})
             .then( response => response.json());
 
-        console.log("peopleJson in ASSIGN SAGA: ", peopleJson )
+        console.log("peopleJson in AJAX_INIT_DONE SAGA: ", peopleJson )
         action.ass.push( defaultAssigment( jsonPreferences, peopleJson) );
     }
 
 
-    console.log("action ASSIGN SAGA: ", action);
+    console.log("action AJAX_INIT_DONE SAGA: ", action);
 
-    yield put( {type: 'ASSIGN',jsonPreferences: jsonPreferences, action:action});
+    //jsonPreferences: jsonPreferences,
+    yield put({ type: "AJAX_INIT_DONE", action:action});
 }
 
-function* assignActionWatcher() {
-    yield takeLatest("START_ASSIGN", fetchAssign );
+export function* triggerInitAjaxDataActionWatcher() {
+
+    // working example:
+    //https://stackblitz.com/edit/react-redux-saga-demo
+
+    //console.log("ARGUMENTS IN call to START_AJAX_INIT in triggerInitAjaxDataActionWatcher(): ", arguments)
+    yield takeLatest("START_AJAX_INIT", workFetchInitAjaxData );
 }

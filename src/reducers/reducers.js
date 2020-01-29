@@ -95,13 +95,18 @@ const counter = (state, action) => {
 
     switch (action.type) {
 
-        //case "START_ASSIGN":
-            //console.log("hi from START_ASSIGN in Reducer");
+        // case "START_AJAX_INIT":
+        //     console.log("hi from START_AJAX_INIT in Reducer");
+        //     console.log( "Action in START_AJAX_INIT reducer: ", action );
+
+         case "AJAX_INIT_DONE":
+             console.log("hi from AJAX_INIT_DONE in Reducer");
+             console.log( "Action in AJAX_INIT_DONE reducer: ", action );
 
 
         /** THIS ONE NEEDS TO GET PREFERENCES AND ROLES */
-        case "ASSIGN":
-            console.log("jsonPreferences in reducer - ASSIGN", action.jsonPreferences)
+        case "assign":
+            //console.log("jsonPreferences in reducer - ASSIGN", action.jsonPreferences)
 
             let z =
              {
@@ -110,7 +115,7 @@ const counter = (state, action) => {
                 count: state.count + 1,
                 nextKey: state.count + 1,
                 //ass: getA(action.ass, ...state.ass, defaultAssigment(action.jsonPreferences) ),
-                 ass: [/*action.ass,*/ ...state.ass, action.defaultAss],
+                 ass: [ action.ass, ...state.ass],
                  assigned: state.assigned + 1,
                 showModal: state.showModal
             }

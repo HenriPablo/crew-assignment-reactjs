@@ -14,6 +14,7 @@ import reducer from "./reducers/reducers";
 import "./css/index.css";
 
 import rootSaga from './sagas/RootSaga';
+import {workFetchInitAjaxData} from "./sagas/DoAjaxInitSaga";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -22,7 +23,8 @@ const enhancers = composeWithDevTools(
 );
 
 const store = createStore( reducer, enhancers );
-store.dispatch({"type":"DO_AJAX_INIT"});
+//store.dispatch({type:"START_AJAX_INIT"} /*, {type:"AJAX_INIT_DONE"}*/);
+//store.dispatch({type:"AJAX_INIT_DONE"});
 
 const rootElement = document.getElementById("root");
 sagaMiddleware.run(rootSaga);
