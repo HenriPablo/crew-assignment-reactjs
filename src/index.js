@@ -5,29 +5,21 @@ import ReactDOM from "react-dom";
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from "react-redux";
-
 import createSagaMiddleware from 'redux-saga';
-
 import { AssignButton } from "./containers/AssignButton";
 import AssignmentsContainer from "./containers/AssignmentsContainer";
 import reducer from "./reducers/reducers";
 import "./css/index.css";
-
 import rootSaga from './sagas/RootSaga';
-import {workFetchInitAjaxData} from "./sagas/DoAjaxInitSaga";
-
 const sagaMiddleware = createSagaMiddleware();
-
 const enhancers = composeWithDevTools(
     applyMiddleware( sagaMiddleware )
 );
 
 const store = createStore( reducer, enhancers );
-//store.dispatch({type:"START_AJAX_INIT"} /*, {type:"AJAX_INIT_DONE"}*/);
-//store.dispatch({type:"AJAX_INIT_DONE"});
-
 const rootElement = document.getElementById("root");
 sagaMiddleware.run(rootSaga);
+store.dispatch( {type:"START_AJAX_INIT"});
 /**
  * some guides:
  *  REDUX:

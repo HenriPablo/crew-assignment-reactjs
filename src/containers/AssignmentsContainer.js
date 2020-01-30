@@ -15,13 +15,8 @@ const mapStateToProps = state => {
 };
 
 // Map Redux actions to component props
-const mapDispatchToProps = dispatch => {
-    //return{
-       // {
-    //, {getRoles: getRoles}
-            return dispatch(START_AJAX_INIT);
-       // }
-    //}
+const mapDispatchToProps = {
+    getRoles: getRoles
 };
 
 const connectedContainer = connect(

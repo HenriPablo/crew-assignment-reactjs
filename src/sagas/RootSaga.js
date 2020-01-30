@@ -5,11 +5,10 @@ import {deleteAssignmentWatcher} from "./DeleteSaga";
 import {triggerInitAjaxDataActionWatcher} from "./DoAjaxInitSaga";
 
 export default function* rootSaga(){
-     yield all[
-         triggerInitAjaxDataActionWatcher(),
-         actionWatcher(),
-         selectPeopleActionWatcher(),
-         deleteAssignmentWatcher()
-     ];
-
+     yield all([
+          triggerInitAjaxDataActionWatcher(),
+          actionWatcher(),
+          selectPeopleActionWatcher(),
+          deleteAssignmentWatcher()
+     ]);
 }

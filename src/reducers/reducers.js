@@ -39,6 +39,7 @@ const counter = (state, action) => {
     //
     // }
 
+    /**
     let getAssigned = function(x){
         if( typeof x != "undefined" && x.alwaysRenderSelf.value === true){
             return 1;
@@ -60,6 +61,21 @@ const counter = (state, action) => {
         } else { return 0 }
     }
 
+    let getA = function (a1, a2, a3 ) {
+        let a = [];
+        if(typeof a1 != "undefined" && a1 != null ){ //&& a1.size > 0
+            a.push( a1);
+        }
+        if(typeof a2 != "undefined" &&  a2 !=null ){
+            a.push( a2);
+        }
+        if(typeof a3 != "undefined" &&  a3 != null && a3.size > 0){
+            a.push( a3 );
+        }
+        return  a;
+    }
+     */
+
     if (state === undefined) {
         return {
             roles: null,
@@ -67,41 +83,40 @@ const counter = (state, action) => {
             messages: messages,
             preferences: {},
             selectionType: "",
-            count: getCount(),//0,
+            count: 0,//getCount(),
             ass:[],// defaultAssigment(),
-            nextKey: getNextKey(),// 0,
+            nextKey: 0,//getNextKey(),
             filterBy: "",
             /** marker updated in Roles and Persons dropdowns to force re-render of those elements  */
             x: new Date().getTime(),
             maxAssignments: plane.seats,
-            assigned: getAssigned(),
+            assigned: 0,//getAssigned()
             showModal: false
         }
     }
 
-    // let getA = function (a1, a2, a3 ) {
-    //     let a = [];
-    //     if(typeof a1 != "undefined" && a1 != null ){ //&& a1.size > 0
-    //         a.push( a1);
-    //     }
-    //     if(typeof a2 != "undefined" &&  a2 !=null ){
-    //         a.push( a2);
-    //     }
-    //     if(typeof a3 != "undefined" &&  a3 != null && a3.size > 0){
-    //         a.push( a3 );
-    //     }
-    //     return  a;
-    // }
+
 
     switch (action.type) {
 
         // case "START_AJAX_INIT":
-        //     console.log("hi from START_AJAX_INIT in Reducer");
-        //     console.log( "Action in START_AJAX_INIT reducer: ", action );
+        //      console.log("hi from START_AJAX_INIT in Reducer");
+        //      console.log( "Action in START_AJAX_INIT reducer: ", action );
+        //      return{
+        //          ...state
+        //      }
 
-         case "AJAX_INIT_DONE":
-             console.log("hi from AJAX_INIT_DONE in Reducer");
-             console.log( "Action in AJAX_INIT_DONE reducer: ", action );
+        case "AJAX_INIT_DONE":
+             // console.log("hi from AJAX_INIT_DONE in Reducer");
+              console.log( "in CASE - Action in AJAX_INIT_DONE reducer: ", action );
+             return{
+                 ...state,
+                 preferences: action.bigJ.preferences,
+                 ass:  action.bigJ.ass /*, ...state.ass*/ ,
+                 count: action.bigJ.count,
+                 nextKey: action.bigJ.nextKey,
+                 assigned : action.bigJ.assigned
+             }
 
 
         /** THIS ONE NEEDS TO GET PREFERENCES AND ROLES */
@@ -111,7 +126,7 @@ const counter = (state, action) => {
             let z =
              {
                 ...state,
-                preferences: action.jsonPreferences,
+                //preferences: action.jsonPreferences,
                 count: state.count + 1,
                 nextKey: state.count + 1,
                 //ass: getA(action.ass, ...state.ass, defaultAssigment(action.jsonPreferences) ),
@@ -119,8 +134,8 @@ const counter = (state, action) => {
                  assigned: state.assigned + 1,
                 showModal: state.showModal
             }
-            console.log("z in ASSIGN action:");
-            console.log( z );
+            //console.log("z in ASSIGN action:");
+            //console.log( z );
             return z;
 
         case 'GET_ROLES' :
@@ -131,6 +146,7 @@ const counter = (state, action) => {
 
 
         case 'ROLES_RECEIVED' :
+            console.log( "STATE in CASE 'ROLES_RECIVED': ", ...state );
             return {
                 ...state,
                 roles: action.json,
