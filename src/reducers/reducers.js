@@ -109,10 +109,12 @@ const counter = (state, action) => {
         case "AJAX_INIT_DONE":
              // console.log("hi from AJAX_INIT_DONE in Reducer");
               console.log( "in CASE - Action in AJAX_INIT_DONE reducer: ", action );
-             return{
+             console.log("ASS length in AJAX_INIT_DONE: ", action.bigJ.ass.length )
+              return{
                  ...state,
                  preferences: action.bigJ.preferences,
-                 ass:  action.bigJ.ass /*, ...state.ass*/ ,
+                 //ass:  [action.bigJ.ass, ...state.ass],
+                  ass: action.bigJ.ass,
                  count: action.bigJ.count,
                  nextKey: action.bigJ.nextKey,
                  assigned : action.bigJ.assigned
@@ -146,7 +148,6 @@ const counter = (state, action) => {
 
 
         case 'ROLES_RECEIVED' :
-            console.log( "STATE in CASE 'ROLES_RECIVED': ", ...state );
             return {
                 ...state,
                 roles: action.json,

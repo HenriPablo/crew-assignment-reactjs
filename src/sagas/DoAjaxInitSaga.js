@@ -2,14 +2,18 @@ import {put, takeLatest, takeEvery} from "@redux-saga/core/effects";
 //export {triggerInitAjaxDataActionWatcher}
 
 let getDefaultPerson = function(persons){
+    let defautlPerson = {};
     //return preferences.alwaysRenderSelf.defaultPerson; //persons.self;
     for( let i = 0; i < persons.length; i++ ){
         //console.log( "SAGA persons[i]: ", persons[i]);
         if( persons[i].self === "true" ){
             //console.log( "AJAX_INIT_DONE SAGA persons[i]: ", persons[i]);
-            return persons[i];
+            defautlPerson = persons[i];
+            break;
         }
     }
+    console.log( "Deafault Perosn in Saga: ", defautlPerson );
+    return defautlPerson;
 }
 
 let defaultAssigment = function( prefs, people ){
@@ -19,7 +23,7 @@ let defaultAssigment = function( prefs, people ){
         console.log("AJAX_INIT_DONE getDefaultPerson(x): ", getDefaultPerson(people) );
         defaultAss = [{
             "assignedPerson": getDefaultPerson(people),
-            "assignedPersons": getDefaultPerson(prefs),// { [preferences.alwaysRenderSelf.defaultPerson] : persons.self },
+            "assignedPersons": getDefaultPerson(people),// { [preferences.alwaysRenderSelf.defaultPerson] : persons.self },
             "assignedRole": prefs.alwaysRenderSelf.defaultRole, //getDefaultRole(x),
             "assignmentKey": 0
         }]
@@ -35,6 +39,10 @@ function* workFetchInitAjaxData( action ) {
 
     /** in LRAVEL this one needs to be initialized with a proper yield fetch */
     action.ass = [];
+    action.count = 0;
+    action.nextKey = 0;
+    action.assigned = 0;
+
     const jsonPreferences = {
         "alwaysRenderSelf" : {
             "value" : true,
@@ -63,11 +71,12 @@ function* workFetchInitAjaxData( action ) {
 
         console.log("peopleJson in AJAX_INIT_DONE SAGA: ", peopleJson )
 //        action.ass.push( defaultAssigment( jsonPreferences, peopleJson) );
-        action.ass[0]  = defaultAssigment( jsonPreferences, peopleJson);
+        action.ass = defaultAssigment( jsonPreferences, peopleJson);
         action.count = 1;
         action.nextKey = 1;
         action.assigned = 1;
     }
+
     let bigJ = action;
 
     //console.log("action AJAX_INIT_DONE SAGA: ", action);
