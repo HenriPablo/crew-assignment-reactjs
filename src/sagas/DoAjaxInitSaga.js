@@ -38,7 +38,7 @@ function* workFetchInitAjaxData( action ) {
 
     const jsonPreferences = {
         "alwaysRenderSelf" : {
-            "value" : false,
+            "value" : true,
             "tip" : "Render dropdown selects for Self as pilot and specified role, for example PIC, Student, etc.",
             "defaultRole" : "59",
             "defaultPerson" : "self"
