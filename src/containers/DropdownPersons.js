@@ -80,7 +80,7 @@ export const DropdownPersons = connectedDropdownSelect(
             /** add default person to dropdown by preference value */
             if(
                 /** initial app load */
-                this.props.preferences.alwaysRenderSelf.value === true &&
+                this.props.preferences.alwaysRenderSelf === true &&
                 this.props.ass.length === 1
                 && this.props.ass[0].assignedPerson !== null
                 // check if the role selection matches roles of the default person
@@ -94,7 +94,7 @@ export const DropdownPersons = connectedDropdownSelect(
             }
             /** Changing default role on a default assignment */
             else if(
-                this.props.preferences.alwaysRenderSelf.value === true &&
+                this.props.preferences.alwaysRenderSelf === true &&
                 this.props.ass.length === 1 &&
                 this.props.preferences.alwaysRenderSelf.defaultRole !== this.props.ass[0].assignedRole &&
                 this.props.ass[0].assignedRole !== null
@@ -113,7 +113,7 @@ export const DropdownPersons = connectedDropdownSelect(
                 console.log(" in 'ELSE' BEFORE LOOP props: ", this.props );
                 for (let i = 0; i < assignments.length; i++) {
 
-                    if( props.preferences.alwaysRenderSelf.value === true &&
+                    if( props.preferences.alwaysRenderSelf === true &&
                         props.personsKey === 0
                         && assignments[i].assignmentKey === 0
                         && assignments[i].assignedPerson.roles.includes(  assignments[i].assignedRole )
@@ -133,7 +133,7 @@ export const DropdownPersons = connectedDropdownSelect(
                         ( typeof assignments[i].assignedPersons !== "undefined"
                             && props.personsKey === 0
                             && assignments[i].assignmentKey === 0
-                            && props.preferences.alwaysRenderSelf.value === false
+                            && props.preferences.alwaysRenderSelf === false
                         )
                     )
                     {
@@ -151,7 +151,7 @@ export const DropdownPersons = connectedDropdownSelect(
                         typeof assignments[i].assignedPersons !== "undefined"
                         && props.personsKey === 0
                         && assignments[i].assignmentKey === 0
-                        && props.preferences.alwaysRenderSelf.value === true
+                        && props.preferences.alwaysRenderSelf === true
                         && !assignments[i].assignedPerson.roles.includes( assignments[i].assignedRole )
                     )
                     {

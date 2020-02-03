@@ -13,11 +13,11 @@ let getDefaultPerson = function(persons){
 
 let defaultAssigment = function( prefs, people ){
     let defaultAss = [];
-    if( typeof prefs != "undefined" && prefs.alwaysRenderSelf.value === true){
+    if( typeof prefs != "undefined" && prefs.alwaysRenderSelf === true){
         defaultAss = [{
             "assignedPerson": getDefaultPerson(people),
             "assignedPersons": getDefaultPerson(people),// { [preferences.alwaysRenderSelf.defaultPerson] : persons.self },
-            "assignedRole": prefs.alwaysRenderSelf.defaultRole, //getDefaultRole(x),
+            "assignedRole": prefs.defaultRole, //getDefaultRole(x),
             "assignmentKey": 0
         }]
     }
@@ -36,13 +36,20 @@ function* workFetchInitAjaxData( action ) {
     action.nextKey = 0;
     action.assigned = 0;
 
+    // const jsonPreferences = {
+    //     "alwaysRenderSelf" : {
+    //         "value" : true,
+    //         "tip" : "Render dropdown selects for Self as pilot and specified role, for example PIC, Student, etc.",
+    //         "defaultRole" : "59",
+    //         "defaultPerson" : "self"
+    //     }
+    // }
+
     const jsonPreferences = {
-        "alwaysRenderSelf" : {
-            "value" : true,
-            "tip" : "Render dropdown selects for Self as pilot and specified role, for example PIC, Student, etc.",
-            "defaultRole" : "59",
-            "defaultPerson" : "self"
-        }
+        "alwaysRenderSelf" : true,
+        "tip" : "Render dropdown selects for Self as pilot and specified role, for example PIC, Student, etc.",
+        "defaultRole" : "59",
+        "defaultPerson" : "self"
     }
 
     // yield fetch('/getPreferencesAjax',
@@ -58,7 +65,7 @@ function* workFetchInitAjaxData( action ) {
     action.assigned = 0;
     action.preferences = jsonPreferences
 
-    if( jsonPreferences.alwaysRenderSelf.value == true){
+    if( jsonPreferences.alwaysRenderSelf == true){
         const peopleJson = yield fetch('http://localhost:3000/ajax-people.json?roleId=89' , {headers : {'Content-Type': 'application/json','Accept': 'application/json'}})
             .then( response => response.json());
 
