@@ -45,11 +45,20 @@ function* workFetchInitAjaxData( action ) {
     //     }
     // }
 
-    const jsonPreferences = {
+    const jsonPreferences1 = {
         "alwaysRenderSelf" : true,
         "tip" : "Render dropdown selects for Self as pilot and specified role, for example PIC, Student, etc.",
         "defaultRole" : "59",
         "defaultPerson" : "self"
+    }
+
+    const jsonPreferences = {
+        "id": 102,
+        "preference_value": 0,
+        "preference_code": "always_render_self",
+        "preference_label": "Always Render Self",
+        "preference_tip": "Whether or not to assign \"selft\" as the derfault PIC Crewmember on a flight",
+        "preferences_group_id": 100
     }
 
     // yield fetch('/getPreferencesAjax',
