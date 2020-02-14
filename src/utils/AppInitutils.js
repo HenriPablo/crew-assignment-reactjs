@@ -27,7 +27,7 @@ let createAssignSelfPrefs = ( rawPrefsArray ) => {
 
             if( rawPrefsArray[i].preference_code == "always_render_self"){
                 //alert(rawPrefsArray[i].preference_value)
-               if(rawPrefsArray[i].preference_value == 1 ){
+               if( parseInt( rawPrefsArray[i].preference_value, 10 ) === 1 ){
                    jsonPreferences.alwaysRenderSelf = true;
                }
             }
