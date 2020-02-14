@@ -80,6 +80,8 @@ function* workFetchInitAjaxData( action ) {
         }
     ];
 
+    const rawPrefsDB = [{"id":103,"preference_code":"default_role","preference_label":"Default Role","preference_tip":"Default role for the crewmember assigned to a flight by default","preferences_group_id":100,"preference_value":"59"},{"id":104,"preference_code":"default_person","preference_label":"Default Person","preference_tip":"Person assigned to flight by default, DEFAULT_ROLE is the role they will perform as a crewmember on the flight","preferences_group_id":100,"preference_value":"self"},{"id":102,"preference_code":"always_render_self","preference_label":"Always Render Self","preference_tip":"Whether or not to assign \"selft\" as the derfault PIC Crewmember on a flight","preferences_group_id":100,"preference_value":"1"}]
+
     // yield fetch('/getPreferencesAjax',
     // {
     //     headers: {
@@ -87,7 +89,7 @@ function* workFetchInitAjaxData( action ) {
     //     }
     // }).then( response => response.json());
 
-    const jsonPreferences = createAssignSelfPrefs( rawPrefs );
+    const jsonPreferences = createAssignSelfPrefs( rawPrefsDB );
 
     action.count = 0;
     action.nextKey = 0;
