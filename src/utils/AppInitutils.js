@@ -44,4 +44,13 @@ let createAssignSelfPrefs = ( rawPrefsArray ) => {
 
     return jsonPreferences;
 
-}
+};
+
+
+
+let createExistingAssignments = ( existingAssignments ) => {
+    let existingAss = [];
+
+
+    return existingAss;
+};

@@ -31,7 +31,12 @@ let defaultAssigment = function( prefs, people ){
 function* workFetchInitAjaxData( action ) {
     console.log("action at TOP OF ASSIGN SAGA: ", action );
 
-    const existingFlightCrewAssignments = [{"id":27,"flight_id":98,"crewmember_id":1,"crewmembertype_id":87},{"id":28,"flight_id":98,"crewmember_id":2,"crewmembertype_id":62},{"id":29,"flight_id":98,"crewmember_id":1,"crewmembertype_id":87},{"id":30,"flight_id":98,"crewmember_id":74,"crewmembertype_id":59}]
+    const existingFlightCrewAssignments = [
+        {"id":27,"flight_id":98,"crewmember_id":1,"crewmembertype_id":87},
+        {"id":28,"flight_id":98,"crewmember_id":2,"crewmembertype_id":62},
+        {"id":29,"flight_id":98,"crewmember_id":1,"crewmembertype_id":87},
+        {"id":30,"flight_id":98,"crewmember_id":74,"crewmembertype_id":59}
+        ];
 
     /** in LRAVEL this one needs to be initialized with a proper yield fetch */
     action.ass = [];
@@ -41,7 +46,7 @@ function* workFetchInitAjaxData( action ) {
 
     if( existingFlightCrewAssignments.length > 0){
         console.log("existingFlightCrewAssignments: ", existingFlightCrewAssignments);
-        action.ass = existingFlightCrewAssignments;
+        //action.ass = existingFlightCrewAssignments;
     }
 
     const rawPrefsDB = [
